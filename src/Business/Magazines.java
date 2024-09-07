@@ -3,8 +3,8 @@ package Business;
 public class Magazines extends Document{
     private int number;
 
-    public Magazines(String title, String author, String publicationDate, int numberOfPages, int number) {
-        super(title, author, publicationDate, numberOfPages);
+    public Magazines(String title, String author, String publicationDate, int numberOfPages, Status status, int number) {
+        super(title, author, publicationDate, numberOfPages, status);
         this.number = number;
     }
 
@@ -25,6 +25,7 @@ public class Magazines extends Document{
         System.out.println("Author: " + getAuthor());
         System.out.println("Publication Date: " + getPublicationDate());
         System.out.println("Number of Pages: " + getNumberOfPages());
+        System.out.println("This is book is " + getStatus());
         System.out.println("Number: " + getNumber());
     }
 

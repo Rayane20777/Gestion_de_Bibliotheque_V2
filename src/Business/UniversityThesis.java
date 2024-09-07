@@ -4,8 +4,8 @@ public class UniversityThesis extends Document {
 
     private String researchDomain;
 
-    public UniversityThesis(String title, String author, String publicationDate, int numberOfPages, String researchDomain) {
-        super(title, author, publicationDate, numberOfPages);
+    public UniversityThesis(String title, String author, String publicationDate, int numberOfPages, String researchDomain, Status status) {
+        super(title, author, publicationDate, numberOfPages, status);
         this.researchDomain = researchDomain;
 
     }
