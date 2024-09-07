@@ -2,12 +2,10 @@ package Business;
 
 public class Books extends Document{
     private String isbn;
-    private String genre;
 
-    public Books(String title, String author, String publicationDate, int numberOfPages, String isbn, String genre) {
+    public Books(String title, String author, String publicationDate, int numberOfPages, String isbn) {
         super(title, author, publicationDate, numberOfPages);
         this.isbn = isbn;
-        this.genre = genre;
     }
 
     public String getIsbn() {
@@ -18,17 +16,9 @@ public class Books extends Document{
         this.isbn = isbn;
     }
 
-    public String getGenre() {
-        return genre;
-    }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
 
-    public void borrow() {
-        System.out.println("Borrowing a book");
-    }
+
 
     public void returnDocument() {
         System.out.println("Returning a book");
@@ -40,6 +30,26 @@ public class Books extends Document{
         System.out.println("Publication Date: " + getPublicationDate());
         System.out.println("Number of Pages: " + getNumberOfPages());
         System.out.println("ISBN: " + getIsbn());
-        System.out.println("Genre: " + getGenre());
     }
+
+    @Override
+    public void borrow() {
+        System.out.println("Borrowing a book");
+    }
+
+    @Override
+    public void turnBack(){
+
+    }
+
+    @Override
+    public void book(){
+
+    }
+
+    @Override
+    public void cancelBooking(){
+
+    }
+
 }

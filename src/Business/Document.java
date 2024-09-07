@@ -1,6 +1,6 @@
 package Business;
 
-abstract public class Document {
+abstract public class Document implements Bookable, Borrowable {
     private String title;
     private String author;
     private String publicationDate;
@@ -44,6 +44,9 @@ abstract public class Document {
     public void setNumberOfPages(int numberOfPages) {
         this.numberOfPages = numberOfPages;
     }
+
+
+
 
 
 
