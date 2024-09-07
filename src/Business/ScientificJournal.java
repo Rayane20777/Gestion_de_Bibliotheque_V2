@@ -4,8 +4,8 @@ public class ScientificJournal extends Document {
     private String field;
     private String university;
 
-    public ScientificJournal(String title, String author, String publicationDate, int numberOfPages,Status status, String field , String university) {
-        super(title, author, publicationDate, numberOfPages, status);
+    public ScientificJournal(int id, String title, String author, String publicationDate, int numberOfPages, int borrowerId, int bookerId, Status status, String field , String university) {
+        super(id, title, author, publicationDate, numberOfPages, borrowerId, bookerId, status);
         this.field = field;
         this.university = university;
     }

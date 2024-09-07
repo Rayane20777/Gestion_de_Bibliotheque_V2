@@ -1,23 +1,38 @@
 package Business;
 
 abstract public class Document implements Bookable, Borrowable {
+    private int id;
     private String title;
     private String author;
     private String publicationDate;
     private int numberOfPages;
     private Status status;
+    private int borrowerId;
+    private int bookerId;
     public enum Status{
         AVAILABLE,
         BORROWED,
         BOOKED
     }
 
-    public Document(String title, String author, String publicationDate, int numberOfPages, Status status) {
+    public Document(int id, String title, String author, String publicationDate, int numberOfPages, int borrowerId, int bookerId,Status status) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.publicationDate = publicationDate;
         this.numberOfPages = numberOfPages;
         this.status = status;
+        this.borrowerId = borrowerId;
+        this.bookerId = bookerId;
+
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public String getTitle() {
@@ -60,10 +75,19 @@ abstract public class Document implements Bookable, Borrowable {
         this.status = status;
     }
 
+    public int getBookerId() {
+        return bookerId;
+    }
 
+    public void setBookerId(int bookerId) {
+        this.bookerId = bookerId;
+    }
 
+    public int getBorrowerId() {
+        return borrowerId;
+    }
 
-
-
-
+    public void setBorrowerId(int borrowerId) {
+        this.borrowerId = borrowerId;
+    }
 }

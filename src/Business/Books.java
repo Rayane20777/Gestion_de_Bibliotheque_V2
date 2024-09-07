@@ -3,8 +3,8 @@ package Business;
 public class Books extends Document{
     private String isbn;
 
-    public Books(String title, String author, String publicationDate, int numberOfPages,Status status, String isbn) {
-        super(title, author, publicationDate, numberOfPages, status);
+    public Books(int id, String title, String author, String publicationDate, int numberOfPages, int borrowerId, int bookerId, Status status, String isbn) {
+        super(id, title, author, publicationDate, numberOfPages, borrowerId, bookerId, status);
         this.isbn = isbn;
     }
 

@@ -1,6 +1,5 @@
 package Business;
 
-import javax.swing.*;
 
 public class Professor extends User {
 
