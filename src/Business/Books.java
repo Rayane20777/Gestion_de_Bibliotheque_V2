@@ -8,6 +8,8 @@ public class Books extends Document{
         this.isbn = isbn;
     }
 
+    // setters - getters
+
     public String getIsbn() {
         return isbn;
     }
@@ -18,11 +20,7 @@ public class Books extends Document{
 
 
 
-
-
-    public void returnDocument() {
-        System.out.println("Returning a book");
-    }
+    // methods
 
     public void displayDetails() {
         System.out.println("Title: " + getTitle());

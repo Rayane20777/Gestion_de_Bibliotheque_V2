@@ -27,6 +27,9 @@ abstract public class Document implements Bookable, Borrowable {
 
     }
 
+    // setters - getters
+
+
     public int getId(){
         return id;
     }

@@ -11,6 +11,8 @@ abstract public class User {
         this.email = email;
     }
 
+    // setters - getters
+
     public int getId() {
         return id;
     }

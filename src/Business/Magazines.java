@@ -8,6 +8,9 @@ public class Magazines extends Document{
         this.number = number;
     }
 
+    // setters - getters
+
+
     public int getNumber() {
         return number;
     }
@@ -15,6 +18,8 @@ public class Magazines extends Document{
     public void setNumber(int number) {
         this.number = number;
     }
+
+    // methods
 
     public void returnDocument() {
         System.out.println("Returning a magazine");

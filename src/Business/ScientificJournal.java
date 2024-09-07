@@ -10,6 +10,8 @@ public class ScientificJournal extends Document {
         this.university = university;
     }
 
+    // setters - getters
+
     public String getField() {
         return field;
     }
@@ -39,6 +41,8 @@ public class ScientificJournal extends Document {
         System.out.println("Field: " + getField());
         System.out.println("University: " + getUniversity());
     }
+
+    // methods
 
     @Override
     public void borrow() {

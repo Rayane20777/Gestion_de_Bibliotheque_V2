@@ -9,6 +9,9 @@ public class UniversityThesis extends Document {
         this.researchDomain = researchDomain;
 
     }
+
+    // setters - getters
+
     public String getResearchDomain() {
         return researchDomain;
     }
@@ -17,7 +20,7 @@ public class UniversityThesis extends Document {
         this.researchDomain = researchDomain;
     }
 
-
+    // methods
 
     @Override
     public void book() {

@@ -11,6 +11,8 @@ public class Professor extends User {
 
     }
 
+    // setters - getters
+
     public String getDepartment() {
         return department;
     }
