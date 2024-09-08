@@ -7,8 +7,8 @@ public class AdminConsole {
     public static void admin(){
         System.out.println("******************************");
         System.out.println("Choose an option:");
-        System.out.println("1. Add a document");
-        System.out.println("2. Remove a document");
+        System.out.println("1. Manage documents");
+        System.out.println("2. Manage users");
         System.out.println("3. exit");
         System.out.println("******************************");
 
@@ -24,7 +24,7 @@ public class AdminConsole {
                 break;
             case 3:
                 System.out.println("exit");
-                break;
+                return;
             default:
                 System.out.println("Invalid choice");
 

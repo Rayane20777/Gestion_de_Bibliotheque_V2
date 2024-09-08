@@ -9,7 +9,7 @@ public class Db {
     final private Connection connection;
     private String jdbcUrl = "jdbc:postgresql://localhost:5432/Library_V2";
     private String username = "postgres";
-    private String password = "ALPHAcelone12!@";
+    private String password = "password";
 
     private Db() throws SQLException {
         try {

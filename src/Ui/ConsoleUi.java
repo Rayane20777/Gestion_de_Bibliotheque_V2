@@ -30,6 +30,7 @@ public class ConsoleUi {
                     break;
                 case 3:
                     System.out.println("exit");
+                    System.exit(0);
                     break;
                 case 420:
                     AdminConsole.admin();
