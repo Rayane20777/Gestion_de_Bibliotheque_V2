@@ -1,5 +1,8 @@
 package Business;
 
+import Business.Interfaces.Bookable;
+import Business.Interfaces.Borrowable;
+
 abstract public class Document implements Bookable, Borrowable {
     private int id;
     private String title;

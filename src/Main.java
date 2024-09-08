@@ -1,5 +1,5 @@
 import Resources.Db;
-import Ui.Console;
+import Ui.ConsoleUi;
 
 import java.sql.SQLException;
 
@@ -11,8 +11,8 @@ public class Main {
             System.out.println("Database connection established.");
 
             // Start the console interface
-            Console console = new Console();
-            console.start();
+            ConsoleUi console = new ConsoleUi();
+            console.startMenu();
         } catch (SQLException e) {
             System.err.println("Failed to establish database connection: " + e.getMessage());
         }
