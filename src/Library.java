@@ -1,9 +1,13 @@
-import Resources.Db;
+import Config.Db;
 import Ui.ConsoleUi;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.sql.SQLException;
 
-public class Main {
+public class Library {
+
+
     public static void main(String... args) {
         try {
             // Initialize the database connection

@@ -24,8 +24,12 @@ public class ProfessorConsole {
                     System.out.println("Cancel booking");
                     break;
                 case 3:
-                    System.out.println("exit");
+                    System.out.println("Go back");
                     return;
+                case 4:
+                    System.out.println("exit program");
+                    System.exit(0);
+                    break;
                 default:
                     System.out.println("Invalid choice");
 

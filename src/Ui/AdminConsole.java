@@ -23,8 +23,12 @@ public class AdminConsole {
                 System.out.println("Manage users");
                 break;
             case 3:
-                System.out.println("exit");
+                System.out.println("go back");
                 return;
+            case 4:
+                System.out.println("exit program");
+                System.exit(0);
+                break;
             default:
                 System.out.println("Invalid choice");
 
