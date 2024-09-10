@@ -1,6 +1,9 @@
 package Ui;
 
 import java.util.Scanner;
+import Business.Service.BookService;
+//import Business.Service.BookServiceImpl;
+
 
 public class AdminConsole {
 
@@ -39,10 +42,10 @@ public class AdminConsole {
     public static void docManagement(){
         System.out.println("******************************");
         System.out.println("Choose an option:");
-        System.out.println("1. Books");
-        System.out.println("2. Magazines");
-        System.out.println("3. Scientific Journals");
-        System.out.println("4. University Thesis");
+        System.out.println("1. Manage Books");
+        System.out.println("2. Manage Magazines");
+        System.out.println("3. Manage Scientific Journals");
+        System.out.println("4. Manage University Thesis");
         System.out.println("5. Go back");
         System.out.println("6. Exit program");
         System.out.println("******************************");
@@ -52,7 +55,7 @@ public class AdminConsole {
 
         switch (choice) {
             case 1:
-                System.out.println("Books");
+                manageBooks(prompt);
                 break;
             case 2:
                 System.out.println("Magazines");
@@ -105,6 +108,47 @@ public class AdminConsole {
             default:
                 System.out.println("Invalid choice");
 
+        }
+    }
+
+    private static void manageBooks(Scanner prompt){
+        while(true){
+            System.out.println("******************************");
+            System.out.println("Choose an option:");
+            System.out.println("1. Add a book");
+            System.out.println("2. Remove a book");
+            System.out.println("3. Update a book");
+            System.out.println("4. Display all books");
+            System.out.println("5. Go back");
+            System.out.println("6. Exit program");
+            System.out.println("******************************");
+
+            int choice = prompt.nextInt();
+
+            switch (choice) {
+                case 1:
+                    BookService.addBook(prompt);
+                    break;
+                case 2:
+                    BookService.removeBook(prompt);
+                    break;
+                case 3:
+                    BookService.updateBook(prompt);
+                    break;
+                case 4:
+                    BookService.displayBooks(prompt);
+                    break;
+                case 5:
+                    System.out.println("Go back");
+                    return;
+                case 6:
+                    System.out.println("exit program");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+
+            }
         }
     }
 
