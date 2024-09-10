@@ -1,4 +1,4 @@
-package Business;
+package Business.Model;
 
 public class Magazines extends Document{
     private int number;
@@ -33,6 +33,8 @@ public class Magazines extends Document{
         System.out.println("This is book is " + getStatus());
         System.out.println("Number: " + getNumber());
     }
+
+
 
     @Override
     public void borrow() {

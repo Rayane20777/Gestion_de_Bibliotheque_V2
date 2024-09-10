@@ -1,4 +1,4 @@
-package Business;
+package Business.Model;
 
 import Business.Interfaces.Bookable;
 import Business.Interfaces.Borrowable;
@@ -96,4 +96,6 @@ abstract public class Document implements Bookable, Borrowable {
     public void setBorrowerId(int borrowerId) {
         this.borrowerId = borrowerId;
     }
+
+
 }

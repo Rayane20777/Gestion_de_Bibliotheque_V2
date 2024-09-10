@@ -1,4 +1,4 @@
-package Business;
+package Business.Model;
 
 public class Books extends Document{
     private String isbn;

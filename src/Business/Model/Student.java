@@ -1,4 +1,4 @@
-package Business;
+package Business.Model;
 
 public class Student extends User {
     private String faculty;

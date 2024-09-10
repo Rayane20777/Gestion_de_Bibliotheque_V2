@@ -1,4 +1,4 @@
-package Business;
+package Business.Model;
 
 public class ScientificJournal extends Document {
     private String field;
