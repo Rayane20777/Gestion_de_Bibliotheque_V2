@@ -3,6 +3,8 @@ package Business;
 import DAO.BooksDAOImpl;
 import DAO.Interfaces.BooksDAO;
 
+import java.util.List;
+
 public class Books extends Document{
     private String isbn;
     private static final BooksDAO booksDAO = new BooksDAOImpl();
@@ -35,13 +37,44 @@ public class Books extends Document{
         System.out.println("Book added successfully");
     }
 
+    public static void deleteBook(int id) {
+        booksDAO.delete(id);
+        System.out.println("Book deleted successfully");
+    }
+
+    public static void updateBook(int id, String title, String author, String publicationDate, String isbn) {
+        Books book = booksDAO.findById(id);
+        if (book == null) {
+            System.out.println("Book not found");
+            return;
+        }
+        book.setTitle(title);
+        book.setAuthor(author);
+        book.setPublicationDate(publicationDate);
+        book.setIsbn(isbn);
+        booksDAO.update(book);
+        System.out.println("Book updated successfully");
+    }
+
+
+
+    public static void displayBooks() {
+        List<Books> booksList = booksDAO.findAll();
+        for (Books book : booksList) {
+            book.displayDetails();
+            System.out.println("----------------------------");
+        }
+    }
+
     public void displayDetails() {
+        System.out.println("ID: " + getId());
         System.out.println("Title: " + getTitle());
         System.out.println("Author: " + getAuthor());
         System.out.println("Publication Date: " + getPublicationDate());
-        System.out.println("This is book is " + getStatus());
+        System.out.println("This book is " + getStatus());
         System.out.println("ISBN: " + getIsbn());
     }
+
 
     @Override
     public void borrow() {

@@ -132,13 +132,13 @@ public class AdminConsole {
                     addBook(prompt);
                     break;
                 case 2:
-                    System.out.println("Remove a book");
+                    removeBook(prompt);
                     break;
                 case 3:
-                    System.out.println("Update a book");
+                    updateBook(prompt);
                     break;
                 case 4:
-                    System.out.println("Display all books");
+                    displayBooks();
                     break;
                 case 5:
                     System.out.println("Go back");
@@ -171,6 +171,34 @@ public class AdminConsole {
         String isbn = prompt.nextLine();
 
         Books.addBook(id, title, author, publicationDate, isbn);
+    }
+
+    private static void removeBook(Scanner prompt) {
+        System.out.println("Enter Book ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+        Books.deleteBook(id);
+    }
+
+    private static void updateBook(Scanner prompt) {
+        System.out.println("Enter Book ID to update:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter new Title:");
+        String title = prompt.nextLine();
+        System.out.println("Enter new Author:");
+        String author = prompt.nextLine();
+        System.out.println("Enter new Publication Date (YYYY-MM-DD):");
+        String publicationDate = prompt.nextLine();
+        System.out.println("Enter new ISBN:");
+        String isbn = prompt.nextLine();
+
+        Books.updateBook(id, title, author, publicationDate, isbn);
+    }
+
+    private static void displayBooks() {
+        Books.displayBooks();
     }
 
 }
