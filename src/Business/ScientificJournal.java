@@ -1,8 +1,14 @@
 package Business;
 
+import DAO.Interfaces.ScientificJournalDAO;
+import DAO.ScientificJournalDAOImpl;
+
+import java.util.List;
+
 public class ScientificJournal extends Document {
     private String field;
     private String university;
+    private static final ScientificJournalDAO scientificJournalDAO = new ScientificJournalDAOImpl();
 
     public ScientificJournal(int id, String title, String author, String publicationDate, Status status, int borrowerId, int bookerId, String field , String university) {
         super(id, title, author, publicationDate, status, borrowerId, bookerId);
@@ -29,8 +35,40 @@ public class ScientificJournal extends Document {
     }
 
 
-    public void returnDocument() {
-        System.out.println("Returning a scientific journal");
+    // methods
+
+    public static void addScientificJournal(int id, String title, String author, String publicationDate, String field, String university) {
+        ScientificJournal newScientificJournal = new ScientificJournal(id, title, author, publicationDate, Status.available, 0, 0, field, university);
+        scientificJournalDAO.save(newScientificJournal);
+        System.out.println("Scientific journal added successfully");
+    }
+
+    public static void deleteScientificJournal(int id) {
+        scientificJournalDAO.delete(id);
+        System.out.println("Scientific journal deleted successfully");
+    }
+
+    public static void updateScientificJournal(int id, String title, String author, String publicationDate, String field, String university) {
+        ScientificJournal scientificJournal = scientificJournalDAO.findById(id);
+        if (scientificJournal == null) {
+            System.out.println("Scientific journal not found");
+            return;
+        }
+        scientificJournal.setTitle(title);
+        scientificJournal.setAuthor(author);
+        scientificJournal.setPublicationDate(publicationDate);
+        scientificJournal.setField(field);
+        scientificJournal.setUniversity(university);
+        scientificJournalDAO.update(scientificJournal);
+        System.out.println("Scientific journal updated successfully");
+    }
+
+    public static void displayScientificJournals() {
+        List<ScientificJournal> scientificJournalsList = scientificJournalDAO.findAll();
+        for (ScientificJournal scientificJournal : scientificJournalsList) {
+            scientificJournal.displayDetails();
+            System.out.println("----------------------------");
+        }
     }
 
     public void displayDetails() {
@@ -40,6 +78,13 @@ public class ScientificJournal extends Document {
         System.out.println("Field: " + getField());
         System.out.println("University: " + getUniversity());
     }
+
+
+
+    public void returnDocument() {
+        System.out.println("Returning a scientific journal");
+    }
+
 
     // methods
 

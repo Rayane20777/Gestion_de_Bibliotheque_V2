@@ -1,6 +1,5 @@
 package DAO;
 
-import Business.Books;
 import Business.Magazines;
 import DAO.Interfaces.MagazinesDAO;
 import Config.Db;
@@ -76,7 +75,7 @@ public class MagazineDAOImpl implements MagazinesDAO{
                         resultSet.getString("title"),
                         resultSet.getString("author"),
                         resultSet.getString("publication_date"),
-                        Books.Status.valueOf(resultSet.getString("status")),
+                        Magazines.Status.valueOf(resultSet.getString("status")),
                         resultSet.getInt("borrower_id"),
                         resultSet.getInt("booker_id"),
                         resultSet.getInt("number")
@@ -104,7 +103,7 @@ public class MagazineDAOImpl implements MagazinesDAO{
                         resultSet.getString("title"),
                         resultSet.getString("author"),
                         resultSet.getString("publication_date"),
-                        Books.Status.valueOf(resultSet.getString("status")),
+                        Magazines.Status.valueOf(resultSet.getString("status")),
                         resultSet.getInt("borrower_id"),
                         resultSet.getInt("booker_id"),
                         resultSet.getInt("number")

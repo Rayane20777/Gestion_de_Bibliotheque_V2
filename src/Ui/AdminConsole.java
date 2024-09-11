@@ -3,6 +3,7 @@ package Ui;
 import java.util.Scanner;
 import Business.Books;
 import Business.Magazines;
+import Business.ScientificJournal;
 
 
 
@@ -64,7 +65,7 @@ public class AdminConsole {
                 manageMagazines(prompt);
                 break;
             case 3:
-                System.out.println("Scientific Journals");
+                manageScientificJournals();
                 break;
             case 4:
                 System.out.println("University Thesis");
@@ -195,6 +196,106 @@ public class AdminConsole {
         }
     }
 
+    private static void manageScientificJournals() {
+        while(true){
+            System.out.println("******************************");
+            System.out.println("Choose an option:");
+            System.out.println("1. Add a Scientific Journal");
+            System.out.println("2. Remove a Scientific Journal");
+            System.out.println("3. Update a Scientific Journal");
+            System.out.println("4. Display all Scientific Journals");
+            System.out.println("5. Go back");
+            System.out.println("6. Exit program");
+            System.out.println("******************************");
+
+            Scanner prompt = new Scanner(System.in);
+            int choice = prompt.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addScientificJournal(prompt);
+                    break;
+                case 2:
+                    removeScientificJournal(prompt);
+                    break;
+                case 3:
+                    updateScientificJournal(prompt);
+                    break;
+                case 4:
+                    displayScientificJournals();
+                    break;
+                case 5:
+                    System.out.println("Go back");
+                    return;
+                case 6:
+                    System.out.println("exit program");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+
+            }
+        }
+    }
+
+    // Scientific Journals methods ********************************************
+    private static void addScientificJournal(Scanner prompt) {
+        System.out.println("Enter Scientific Journal ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter Title:");
+        String title = prompt.nextLine();
+
+        System.out.println("Enter Author:");
+        String author = prompt.nextLine();
+
+        System.out.println("Enter Publication Date (YYYY-MM-DD):");
+        String publicationDate = prompt.nextLine();
+
+        System.out.println("Enter filed:");
+        String field = prompt.nextLine();
+
+        System.out.println("Enter university:");
+        String university = prompt.nextLine();
+
+
+        ScientificJournal.addScientificJournal(id, title, author, publicationDate, field, university);
+    }
+
+    private static void removeScientificJournal(Scanner prompt) {
+        System.out.println("Enter Scientific Journal ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+        ScientificJournal.deleteScientificJournal(id);
+    }
+
+
+    private static void updateScientificJournal(Scanner prompt) {
+        System.out.println("Enter Scientific Journal ID to update:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter new Title:");
+        String title = prompt.nextLine();
+        System.out.println("Enter new Author:");
+        String author = prompt.nextLine();
+        System.out.println("Enter new Publication Date (YYYY-MM-DD):");
+        String publicationDate = prompt.nextLine();
+        System.out.println("Enter new field:");
+        String field = prompt.nextLine();
+        System.out.println("Enter new university:");
+        String university = prompt.nextLine();
+
+
+        ScientificJournal.updateScientificJournal(id, title, author, publicationDate, field, university);
+    }
+
+    private static void displayScientificJournals() {
+        ScientificJournal.displayScientificJournals();
+    }
+
+    // Books methods ***********************************************************
     private static void addBook(Scanner prompt) {
         System.out.println("Enter Book ID:");
         int id = prompt.nextInt();
