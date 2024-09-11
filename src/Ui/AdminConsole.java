@@ -2,6 +2,7 @@ package Ui;
 
 import java.util.Scanner;
 import Business.Books;
+import Business.Magazines;
 
 
 
@@ -60,7 +61,7 @@ public class AdminConsole {
                 manageBooks(prompt);
                 break;
             case 2:
-                System.out.println("Magazines");
+                manageMagazines(prompt);
                 break;
             case 3:
                 System.out.println("Scientific Journals");
@@ -153,6 +154,47 @@ public class AdminConsole {
             }
         }
     }
+
+    private static void manageMagazines(Scanner prompt) {
+        while (true) {
+            System.out.println("******************************");
+            System.out.println("Choose an option:");
+            System.out.println("1. Add a magazine");
+            System.out.println("2. Remove a magazine");
+            System.out.println("3. Update a magazine");
+            System.out.println("4. Display all magazines");
+            System.out.println("5. Go back");
+            System.out.println("6. Exit program");
+            System.out.println("******************************");
+
+            int choice = prompt.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addMagazine(prompt);
+                    break;
+                case 2:
+                    removeMagazine(prompt);
+                    break;
+                case 3:
+                    updateMagazine(prompt);
+                    break;
+                case 4:
+                    displayMagazines();
+                    break;
+                case 5:
+                    System.out.println("Go back");
+                    return;
+                case 6:
+                    System.out.println("exit program");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+    }
+
     private static void addBook(Scanner prompt) {
         System.out.println("Enter Book ID:");
         int id = prompt.nextInt();
@@ -199,6 +241,58 @@ public class AdminConsole {
 
     private static void displayBooks() {
         Books.displayBooks();
+    }
+
+    // Magazines methods *******************************************************
+
+    private static void addMagazine(Scanner prompt) {
+        System.out.println("Enter Magazine ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter Title:");
+        String title = prompt.nextLine();
+
+        System.out.println("Enter Author:");
+        String author = prompt.nextLine();
+
+        System.out.println("Enter Publication Date (YYYY-MM-DD):");
+        String publicationDate = prompt.nextLine();
+
+        System.out.println("Enter ISBN:");
+        int number = prompt.nextInt();
+        prompt.nextLine();
+
+        Magazines.addMagazine(id, title, author, publicationDate, number);
+    }
+
+    private static void removeMagazine(Scanner prompt) {
+        System.out.println("Enter Magazine ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+        Magazines.deleteMagazine(id);
+    }
+
+    private static void updateMagazine(Scanner prompt) {
+        System.out.println("Enter Magazine ID to update:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter new Title:");
+        String title = prompt.nextLine();
+        System.out.println("Enter new Author:");
+        String author = prompt.nextLine();
+        System.out.println("Enter new Publication Date (YYYY-MM-DD):");
+        String publicationDate = prompt.nextLine();
+        System.out.println("Enter new ISBN:");
+        int number = prompt.nextInt();
+        prompt.nextLine();
+
+        Magazines.updateMagazine(id, title, author, publicationDate, number);
+    }
+
+    private static void displayMagazines() {
+        Magazines.displayMagazines();
     }
 
 }
