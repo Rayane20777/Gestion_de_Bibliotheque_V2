@@ -1,10 +1,10 @@
-package Business.Model;
+package Business;
 
 public class Magazines extends Document{
     private int number;
 
-    public Magazines(int id, String title, String author, String publicationDate, int numberOfPages,int borrowerId, int bookerId, Status status, int number) {
-        super(id, title, author, publicationDate, numberOfPages, borrowerId, bookerId, status);
+    public Magazines(int id, String title, String author, String publicationDate, int borrowerId, int bookerId, Status status, int number) {
+        super(id, title, author, publicationDate,status,  borrowerId, bookerId);
         this.number = number;
     }
 
@@ -29,7 +29,6 @@ public class Magazines extends Document{
         System.out.println("Title: " + getTitle());
         System.out.println("Author: " + getAuthor());
         System.out.println("Publication Date: " + getPublicationDate());
-        System.out.println("Number of Pages: " + getNumberOfPages());
         System.out.println("This is book is " + getStatus());
         System.out.println("Number: " + getNumber());
     }

@@ -1,11 +1,11 @@
-package Business.Model;
+package Business;
 
 public class ScientificJournal extends Document {
     private String field;
     private String university;
 
-    public ScientificJournal(int id, String title, String author, String publicationDate, int numberOfPages, int borrowerId, int bookerId, Status status, String field , String university) {
-        super(id, title, author, publicationDate, numberOfPages, borrowerId, bookerId, status);
+    public ScientificJournal(int id, String title, String author, String publicationDate, Status status, int borrowerId, int bookerId, String field , String university) {
+        super(id, title, author, publicationDate, status, borrowerId, bookerId);
         this.field = field;
         this.university = university;
     }
@@ -37,7 +37,6 @@ public class ScientificJournal extends Document {
         System.out.println("Title: " + getTitle());
         System.out.println("Author: " + getAuthor());
         System.out.println("Publication Date: " + getPublicationDate());
-        System.out.println("Number of Pages: " + getNumberOfPages());
         System.out.println("Field: " + getField());
         System.out.println("University: " + getUniversity());
     }

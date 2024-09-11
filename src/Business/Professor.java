@@ -1,4 +1,4 @@
-package Business.Model;
+package Business;
 
 
 public class Professor extends User {

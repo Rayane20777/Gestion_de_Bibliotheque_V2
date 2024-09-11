@@ -1,13 +1,16 @@
 package Ui;
 
 import java.util.Scanner;
-import Business.Service.BookService;
-//import Business.Service.BookServiceImpl;
+import Business.Books;
+
 
 
 public class AdminConsole {
-
+    
+    
     public static void admin(){
+        Scanner prompt = new Scanner(System.in);
+        
         System.out.println("******************************");
         System.out.println("Choose an option:");
         System.out.println("1. Manage documents");
@@ -15,7 +18,6 @@ public class AdminConsole {
         System.out.println("3. exit");
         System.out.println("******************************");
 
-        Scanner prompt = new Scanner(System.in);
         int choice = prompt.nextInt();
 
         switch (choice) {
@@ -127,16 +129,16 @@ public class AdminConsole {
 
             switch (choice) {
                 case 1:
-                    BookService.addBook(prompt);
+                    addBook(prompt);
                     break;
                 case 2:
-                    BookService.removeBook(prompt);
+                    System.out.println("Remove a book");
                     break;
                 case 3:
-                    BookService.updateBook(prompt);
+                    System.out.println("Update a book");
                     break;
                 case 4:
-                    BookService.displayBooks(prompt);
+                    System.out.println("Display all books");
                     break;
                 case 5:
                     System.out.println("Go back");
@@ -150,6 +152,25 @@ public class AdminConsole {
 
             }
         }
+    }
+    private static void addBook(Scanner prompt) {
+        System.out.println("Enter Book ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter Title:");
+        String title = prompt.nextLine();
+
+        System.out.println("Enter Author:");
+        String author = prompt.nextLine();
+
+        System.out.println("Enter Publication Date (YYYY-MM-DD):");
+        String publicationDate = prompt.nextLine();
+
+        System.out.println("Enter ISBN:");
+        String isbn = prompt.nextLine();
+
+        Books.addBook(id, title, author, publicationDate, isbn);
     }
 
 }

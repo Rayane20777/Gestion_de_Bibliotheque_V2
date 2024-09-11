@@ -1,10 +1,16 @@
-package Business.Model;
+package Business;
+
+import DAO.BooksDAOImpl;
+import DAO.Interfaces.BooksDAO;
 
 public class Books extends Document{
     private String isbn;
+    private static final BooksDAO booksDAO = new BooksDAOImpl();
 
-    public Books(int id, String title, String author, String publicationDate, int numberOfPages, int borrowerId, int bookerId, Status status, String isbn) {
-        super(id, title, author, publicationDate, numberOfPages, borrowerId, bookerId, status);
+
+
+    public Books(int id, String title, String author, String publicationDate, Status status, int borrowerId, int bookerId, String isbn) {
+        super(id, title, author, publicationDate,status, borrowerId, bookerId);
         this.isbn = isbn;
     }
 
@@ -22,11 +28,17 @@ public class Books extends Document{
 
     // methods
 
+    // methods
+    public static void addBook(int id, String title, String author, String publicationDate, String isbn) {
+        Books newBook = new Books(id, title, author, publicationDate, Status.available, 0, 0, isbn);
+        booksDAO.save(newBook);
+        System.out.println("Book added successfully");
+    }
+
     public void displayDetails() {
         System.out.println("Title: " + getTitle());
         System.out.println("Author: " + getAuthor());
         System.out.println("Publication Date: " + getPublicationDate());
-        System.out.println("Number of Pages: " + getNumberOfPages());
         System.out.println("This is book is " + getStatus());
         System.out.println("ISBN: " + getIsbn());
     }

@@ -1,4 +1,4 @@
-package Business.Model;
+package Business;
 
 abstract public class User {
     private int id;

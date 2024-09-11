@@ -1,11 +1,11 @@
-package Business.Model;
+package Business;
 
 public class UniversityThesis extends Document {
 
     private String researchDomain;
 
-    public UniversityThesis(int id, String title, String author, String publicationDate, int numberOfPages, int borrowerId, int bookerId, Status status,String researchDomain) {
-        super(id, title, author, publicationDate, numberOfPages, borrowerId, bookerId, status);
+    public UniversityThesis(int id, String title, String author, String publicationDate, Status status,int borrowerId, int bookerId, String researchDomain) {
+        super(id, title, author, publicationDate, status,  borrowerId, bookerId);
         this.researchDomain = researchDomain;
 
     }
