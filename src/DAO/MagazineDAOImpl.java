@@ -8,9 +8,12 @@ import Config.Db;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class MagazineDAOImpl implements MagazinesDAO{
+    private static final Logger logger = Logger.getLogger(MagazineDAOImpl.class.getName());
 
     public void save(Magazines magazine) {
         String query = "INSERT INTO magazine (id, title, author, publication_date, status, borrower_id, booker_id, number) VALUES (?, ?, ?, ?, ?::status, ?, ?, ?)";
@@ -26,7 +29,7 @@ public class MagazineDAOImpl implements MagazinesDAO{
             stmt.setInt(8, magazine.getNumber());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE , e.getMessage());
         }
     }
 
@@ -37,7 +40,7 @@ public class MagazineDAOImpl implements MagazinesDAO{
             stmt.setInt(1, id);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE , e.getMessage());
         }
 
     }
@@ -56,7 +59,7 @@ public class MagazineDAOImpl implements MagazinesDAO{
             stmt.setInt(8, magazine.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE , e.getMessage());
         }
     }
 
@@ -83,7 +86,7 @@ public class MagazineDAOImpl implements MagazinesDAO{
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE , e.getMessage());
         }
         return magazine;
 
@@ -112,7 +115,7 @@ public class MagazineDAOImpl implements MagazinesDAO{
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE , e.getMessage());
         }
         return magazinesList;
     }

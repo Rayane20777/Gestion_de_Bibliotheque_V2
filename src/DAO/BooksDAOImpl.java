@@ -7,9 +7,12 @@ import Config.Db;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class BooksDAOImpl implements BooksDAO {
+    private static final Logger logger = Logger.getLogger(MagazineDAOImpl.class.getName());
 
 
     @Override
@@ -27,7 +30,7 @@ public class BooksDAOImpl implements BooksDAO {
             stmt.setString(8, book.getIsbn());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE , e.getMessage());
         }
     }
 
@@ -39,7 +42,7 @@ public class BooksDAOImpl implements BooksDAO {
             stmt.setInt(1, id);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE , e.getMessage());
         }
 
     }
@@ -59,7 +62,7 @@ public class BooksDAOImpl implements BooksDAO {
             stmt.setInt(8, book.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE , e.getMessage());
         }
     }
 
@@ -83,7 +86,7 @@ public class BooksDAOImpl implements BooksDAO {
                 );
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE , e.getMessage());
         }
         return null;
     }
@@ -108,7 +111,7 @@ public class BooksDAOImpl implements BooksDAO {
                 ));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE , e.getMessage());
         }
         return booksList;
     }
