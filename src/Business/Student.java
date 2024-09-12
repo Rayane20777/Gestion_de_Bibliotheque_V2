@@ -3,6 +3,8 @@ package Business;
 import DAO.Interfaces.StudentDAO;
 import DAO.StudentDAOImpl;
 
+import java.util.List;
+
 
 public class Student extends User {
     private String faculty;
@@ -66,6 +68,25 @@ public class Student extends User {
         studentDAO.findAll().forEach(student -> {
             System.out.println("ID: " + student.getId() + " Name: " + student.getName() + " Email: " + student.getEmail() + " Faculty: " + student.getFaculty() + " Grade: " + student.getGrade());
         });
+    }
+
+    public static void searchStudent(String name){
+        List<Student> studentsList = studentDAO.findAll();
+        studentsList.stream()
+                .filter(student -> student.getName().toLowerCase().contains(name.toLowerCase()))
+                .forEach(student -> {
+                    student.displayDetails();
+                    System.out.println("----------------------------");
+                });
+
+    }
+
+    public void displayDetails() {
+        System.out.println("ID : " + getId());
+        System.out.println("Name : " + getName());
+        System.out.println("Email : " + getEmail());
+        System.out.println("Faculty : " + getFaculty());
+        System.out.println("Grade : " + getGrade());
     }
 
 
