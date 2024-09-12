@@ -350,8 +350,9 @@ public class AdminConsole {
             System.out.println("2. Remove a University Thesis");
             System.out.println("3. Update a University Thesis");
             System.out.println("4. Display all University Thesis");
-            System.out.println("5. Go back");
-            System.out.println("6. Exit program");
+            System.out.println("5. Search a University Thesis");
+            System.out.println("6. Go back");
+            System.out.println("7. Exit program");
             System.out.println("******************************");
 
             Scanner prompt = new Scanner(System.in);
@@ -371,9 +372,14 @@ public class AdminConsole {
                     displayUniversityThesis();
                     break;
                 case 5:
+                    System.out.println("Enter University Thesis title:");
+                    String title = prompt.next();
+                    UniversityThesis.searchUniversityThesis(title);
+                    break;
+                case 6:
                     System.out.println("Go back");
                     return;
-                case 6:
+                case 7:
                     System.out.println("exit program");
                     System.exit(0);
                     break;

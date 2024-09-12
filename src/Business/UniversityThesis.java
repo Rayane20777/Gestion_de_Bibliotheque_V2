@@ -3,6 +3,8 @@ package Business;
 import DAO.Interfaces.UniversityThesisDAO;
 import DAO.UniversityThesisDAOImpl;
 
+import java.util.List;
+
 public class UniversityThesis extends Document {
 
     private String researchDomain;
@@ -49,6 +51,16 @@ public class UniversityThesis extends Document {
         universityThesis.setResearchDomain(researchDomain);
         universityThesisDAO.update(universityThesis);
         System.out.println("University thesis updated successfully");
+    }
+
+    public static void searchUniversityThesis(String title){
+        List<UniversityThesis> universityThesisList = universityThesisDAO.findAll();
+        universityThesisList.stream()
+                .filter(universityThesis -> universityThesis.getTitle().contains(title.toLowerCase()))
+                .forEach(universityThesis -> {
+                    universityThesis.displayDetails();
+                    System.out.println("--------------------------");
+                });
     }
 
     public static void displayUniversityThesis() {
