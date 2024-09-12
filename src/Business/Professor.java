@@ -3,7 +3,7 @@ package Business;
 import DAO.Interfaces.ProfessorDAO;
 import DAO.ProfessorDAOImpl;
 
-
+import java.util.List;
 
 
 public class Professor extends User {
@@ -60,8 +60,17 @@ public class Professor extends User {
         });
     }
 
+    public static void searchProfessor(String name){
+        List<Professor> professorsList = professorDAO.findAll();
+        professorsList.stream().filter(professor -> professor.getName().equals(name)).forEach(professor -> {
+            professor.displayDetails();
+            System.out.println("----------------------------");
+
+    }
+    }
+
     public void displayDetails() {
-        System.out.println("ID: " + this.getId() + " Name: " + this.getName() + " Email: " + this.getEmail() + " Department: " + this.getDepartment());
+        System.out.println("ID: " + getId() + " Name: " + getName() + " Email: " + getEmail() + " Department: " + getDepartment());
     }
 
 }
