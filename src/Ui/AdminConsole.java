@@ -254,8 +254,9 @@ public class AdminConsole {
             System.out.println("2. Remove a magazine");
             System.out.println("3. Update a magazine");
             System.out.println("4. Display all magazines");
-            System.out.println("5. Go back");
-            System.out.println("6. Exit program");
+            System.out.println("5. Search a magazine");
+            System.out.println("6. Go back");
+            System.out.println("7. Exit program");
             System.out.println("******************************");
 
             int choice = prompt.nextInt();
@@ -274,9 +275,14 @@ public class AdminConsole {
                     displayMagazines();
                     break;
                 case 5:
+                    System.out.println("Enter magazine title:");
+                    String title = prompt.next();
+                    Magazines.searchMagazine(title);
+                    break;
+                case 6:
                     System.out.println("Go back");
                     return;
-                case 6:
+                case 7:
                     System.out.println("exit program");
                     System.exit(0);
                     break;

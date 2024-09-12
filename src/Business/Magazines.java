@@ -62,6 +62,16 @@ public class Magazines extends Document{
         }
     }
 
+    public static void searchMagazine(String title){
+        List<Magazines> magazinesList = magazinesDAO.findAll();
+        magazinesList.stream()
+                .filter(magazines -> magazines.getTitle().toLowerCase().contains(title.toLowerCase()))
+                .forEach(magazines -> {
+                    magazines.displayDetails();
+                    System.out.println("----------------------------");
+                });
+    }
+
     public void displayDetails() {
         System.out.println("ID: " + getId());
         System.out.println("Title: " + getTitle());
@@ -70,6 +80,8 @@ public class Magazines extends Document{
         System.out.println("This magazine is " + getStatus());
         System.out.println("Number: " + getNumber());
     }
+
+
 
 
     public void returnDocument() {
