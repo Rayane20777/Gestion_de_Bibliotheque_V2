@@ -66,7 +66,7 @@ public class Professor extends User {
             professor.displayDetails();
             System.out.println("----------------------------");
 
-    }
+    });
     }
 
     public void displayDetails() {
