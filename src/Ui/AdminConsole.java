@@ -114,42 +114,45 @@ public class AdminConsole {
     }
 
     public static void manageStudent(){
-        System.out.println("******************************");
-        System.out.println("Choose an option:");
-        System.out.println("1. Add Student");
-        System.out.println("2. Remove Student");
-        System.out.println("3. Update Student");
-        System.out.println("4. Display all Students");
-        System.out.println("5. Go back");
-        System.out.println("6. Exit program");
-        System.out.println("******************************");
+        while(true) {
 
-        Scanner prompt = new Scanner(System.in);
-        int choice = prompt.nextInt();
+            System.out.println("******************************");
+            System.out.println("Choose an option:");
+            System.out.println("1. Add Student");
+            System.out.println("2. Remove Student");
+            System.out.println("3. Update Student");
+            System.out.println("4. Display all Students");
+            System.out.println("5. Go back");
+            System.out.println("6. Exit program");
+            System.out.println("******************************");
 
-        switch (choice) {
-            case 1:
-                addStudent(prompt);
-                break;
-            case 2:
-                removeStudent(prompt);
-                break;
-            case 3:
-                updateStudent(prompt);
-                break;
-            case 4:
-                displayStudents();
-                break;
-            case 5:
-                System.out.println("Go back");
-                return;
-            case 6:
-                System.out.println("exit program");
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Invalid choice");
+            Scanner prompt = new Scanner(System.in);
+            int choice = prompt.nextInt();
 
+            switch (choice) {
+                case 1:
+                    addStudent(prompt);
+                    break;
+                case 2:
+                    removeStudent(prompt);
+                    break;
+                case 3:
+                    updateStudent(prompt);
+                    break;
+                case 4:
+                    displayStudents();
+                    break;
+                case 5:
+                    System.out.println("Go back");
+                    return;
+                case 6:
+                    System.out.println("exit program");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+
+            }
         }
     }
 

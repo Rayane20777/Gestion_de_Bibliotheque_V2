@@ -84,12 +84,17 @@ public class StudentDAOImpl implements StudentDAO {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
-                Student student = new Student(rs.getInt("id"), rs.getString("name"), rs.getString("email"), rs.getString("faculty"), rs.getString("grade"));
-                studentList.add(student);
+                studentList.add(new Student(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        rs.getString("faculty"),
+                        rs.getString("grade")
+                ));
             }
         } catch (SQLException e) {
             logger.log(Level.SEVERE , e.getMessage());
         }
-        return null;
+        return studentList;
     }
 }
