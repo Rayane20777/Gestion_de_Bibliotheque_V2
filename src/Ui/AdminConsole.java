@@ -302,8 +302,9 @@ public class AdminConsole {
             System.out.println("2. Remove a Scientific Journal");
             System.out.println("3. Update a Scientific Journal");
             System.out.println("4. Display all Scientific Journals");
-            System.out.println("5. Go back");
-            System.out.println("6. Exit program");
+            System.out.println("5. Search a Scientific Journal");
+            System.out.println("6. Go back");
+            System.out.println("7. Exit program");
             System.out.println("******************************");
 
             Scanner prompt = new Scanner(System.in);
@@ -323,9 +324,14 @@ public class AdminConsole {
                     displayScientificJournals();
                     break;
                 case 5:
+                    System.out.println("Enter Scientific Journal title:");
+                    String title = prompt.next();
+                    ScientificJournal.searchScientificJournal(title);
+                    break;
+                case 6:
                     System.out.println("Go back");
                     return;
-                case 6:
+                case 7:
                     System.out.println("exit program");
                     System.exit(0);
                     break;

@@ -71,6 +71,16 @@ public class ScientificJournal extends Document {
         }
     }
 
+    public static void searchScientificJournal(String title) {
+        List<ScientificJournal> scientificJournalsList = scientificJournalDAO.findAll();
+        scientificJournalsList.stream()
+                .filter(scientificJournal -> scientificJournal.getTitle().toLowerCase().contains(title.toLowerCase()))
+                .forEach(scientificJournal -> {
+                    scientificJournal.displayDetails();
+                    System.out.println("----------------------------");
+                });
+    }
+
     public void displayDetails() {
         System.out.println("Title: " + getTitle());
         System.out.println("Author: " + getAuthor());
