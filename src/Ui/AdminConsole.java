@@ -98,7 +98,7 @@ public class AdminConsole {
                 manageStudent();
                 break;
             case 2:
-                System.out.println("Manage Professor");
+                professorManagement();
                 break;
             case 3:
                 System.out.println("Go back");
@@ -141,6 +141,48 @@ public class AdminConsole {
                     break;
                 case 4:
                     displayStudents();
+                    break;
+                case 5:
+                    System.out.println("Go back");
+                    return;
+                case 6:
+                    System.out.println("exit program");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+
+            }
+        }
+    }
+
+    public static void professorManagement(){
+        while(true){
+            System.out.println("******************************");
+            System.out.println("Choose an option:");
+            System.out.println("1. Add Professor");
+            System.out.println("2. Remove Professor");
+            System.out.println("3. Update Professor");
+            System.out.println("4. Display all Professors");
+            System.out.println("5. Go back");
+            System.out.println("6. Exit program");
+            System.out.println("******************************");
+
+            Scanner prompt = new Scanner(System.in);
+            int choice = prompt.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addProfessor(prompt);
+                    break;
+                case 2:
+                    removeProfessor(prompt);
+                    break;
+                case 3:
+                    updateProfessor(prompt);
+                    break;
+                case 4:
+                    displayProfessors();
                     break;
                 case 5:
                     System.out.println("Go back");
@@ -585,6 +627,53 @@ public class AdminConsole {
     private static void displayStudents() {
         Student.displayStudents();
 
+    }
+
+    private static void addProfessor(Scanner prompt) {
+        System.out.println("Enter Professor ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter Name:");
+        String name = prompt.nextLine();
+
+        System.out.println("Enter Email:");
+        String email = prompt.nextLine();
+
+        System.out.println("Enter Password:");
+        String password = prompt.nextLine();
+
+        System.out.println("Enter Department:");
+        String department = prompt.nextLine();
+
+        Professor.addProfessor(id, name, email, department);
+
+    }
+
+    private static void removeProfessor(Scanner prompt) {
+        System.out.println("Enter Professor ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+        Professor.removeProfessor(id);
+    }
+
+    private static void updateProfessor(Scanner prompt) {
+        System.out.println("Enter Professor ID to update:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter new Name:");
+        String name = prompt.nextLine();
+        System.out.println("Enter new Email:");
+        String email = prompt.nextLine();
+        System.out.println("Enter new Department:");
+        String department = prompt.nextLine();
+
+        Professor.updateProfessor(id, name, email, department);
+    }
+
+    private static void displayProfessors() {
+        Professor.displayProfessors();
     }
 
 }
