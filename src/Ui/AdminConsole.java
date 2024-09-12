@@ -1,11 +1,8 @@
 package Ui;
 
 import java.util.Scanner;
-import Business.Books;
-import Business.Magazines;
-import Business.ScientificJournal;
-import Business.UniversityThesis;
 
+import Business.*;
 
 
 public class AdminConsole {
@@ -98,7 +95,7 @@ public class AdminConsole {
 
         switch (choice) {
             case 1:
-                System.out.println("Manage Student");
+                manageStudent();
                 break;
             case 2:
                 System.out.println("Manage Professor");
@@ -115,6 +112,47 @@ public class AdminConsole {
 
         }
     }
+
+    public static void manageStudent(){
+        System.out.println("******************************");
+        System.out.println("Choose an option:");
+        System.out.println("1. Add Student");
+        System.out.println("2. Remove Student");
+        System.out.println("3. Update Student");
+        System.out.println("4. Display all Students");
+        System.out.println("5. Go back");
+        System.out.println("6. Exit program");
+        System.out.println("******************************");
+
+        Scanner prompt = new Scanner(System.in);
+        int choice = prompt.nextInt();
+
+        switch (choice) {
+            case 1:
+                addStudent(prompt);
+                break;
+            case 2:
+                removeStudent(prompt);
+                break;
+            case 3:
+                updateStudent(prompt);
+                break;
+            case 4:
+                displayStudents();
+                break;
+            case 5:
+                System.out.println("Go back");
+                return;
+            case 6:
+                System.out.println("exit program");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Invalid choice");
+
+        }
+    }
+
 
     private static void manageBooks(Scanner prompt){
         while(true){
@@ -489,6 +527,61 @@ public class AdminConsole {
 
     private static void displayMagazines() {
         Magazines.displayMagazines();
+    }
+
+    private static void addStudent(Scanner prompt) {
+        System.out.println("Enter Student ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter Name:");
+        String name = prompt.nextLine();
+
+        System.out.println("Enter Email:");
+        String email = prompt.nextLine();
+
+        System.out.println("Enter Password:");
+        String password = prompt.nextLine();
+
+        System.out.println("Enter Faculty:");
+        String faculty = prompt.nextLine();
+
+        System.out.println("Enter Grade:");
+        String grade = prompt.nextLine();
+
+        Student.addStudent(id, name, email, faculty, grade);
+
+    }
+
+    private static void removeStudent(Scanner prompt) {
+        System.out.println("Enter Student ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+        Student.removeStudent(id);
+    }
+
+    private static void updateStudent(Scanner prompt) {
+        System.out.println("Enter Student ID to update:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter new Name:");
+        String name = prompt.nextLine();
+        System.out.println("Enter new Email:");
+        String email = prompt.nextLine();
+        System.out.println("Enter new Faculty:");
+        String faculty = prompt.nextLine();
+        System.out.println("Enter new Grade:");
+        String grade = prompt.nextLine();
+
+        Student.updateStudent(id, name, email, faculty, grade);
+
+
+    }
+
+    private static void displayStudents() {
+        Student.displayStudents();
+
     }
 
 }
