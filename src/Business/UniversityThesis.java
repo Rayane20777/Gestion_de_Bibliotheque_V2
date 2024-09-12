@@ -1,8 +1,12 @@
 package Business;
 
+import DAO.Interfaces.UniversityThesisDAO;
+import DAO.UniversityThesisDAOImpl;
+
 public class UniversityThesis extends Document {
 
     private String researchDomain;
+    private static final UniversityThesisDAO universityThesisDAO = new UniversityThesisDAOImpl();
 
     public UniversityThesis(int id, String title, String author, String publicationDate, Status status,int borrowerId, int bookerId, String researchDomain) {
         super(id, title, author, publicationDate, status,  borrowerId, bookerId);
@@ -19,6 +23,49 @@ public class UniversityThesis extends Document {
     public void setResearchDomain(String researchDomain) {
         this.researchDomain = researchDomain;
     }
+
+
+    //mehtods
+    public static void addUniversityThesis(int id, String title, String author, String publicationDate, String researchDomain) {
+        UniversityThesis newUniversityThesis = new UniversityThesis(id, title, author, publicationDate, Status.available, 0, 0, researchDomain);
+        universityThesisDAO.save(newUniversityThesis);
+        System.out.println("University thesis added successfully");
+    }
+
+    public static void deleteUniversityThesis(int id) {
+        universityThesisDAO.delete(id);
+        System.out.println("University thesis deleted successfully");
+    }
+
+    public static void updateUniversityThesis(int id, String title, String author, String publicationDate, String researchDomain) {
+        UniversityThesis universityThesis = universityThesisDAO.findById(id);
+        if (universityThesis == null) {
+            System.out.println("University thesis not found");
+            return;
+        }
+        universityThesis.setTitle(title);
+        universityThesis.setAuthor(author);
+        universityThesis.setPublicationDate(publicationDate);
+        universityThesis.setResearchDomain(researchDomain);
+        universityThesisDAO.update(universityThesis);
+        System.out.println("University thesis updated successfully");
+    }
+
+    public static void displayUniversityThesis() {
+        universityThesisDAO.findAll().forEach(universityThesis -> {
+            System.out.println("ID: " + universityThesis.getId() + " Title: " + universityThesis.getTitle() + " Author: " + universityThesis.getAuthor() + " Publication Date: " + universityThesis.getPublicationDate() + " Research Domain: " + universityThesis.getResearchDomain());
+        });
+    }
+
+    public void displayDetails() {
+        System.out.println("ID: " + getId());
+        System.out.println("Title: " + getTitle());
+        System.out.println("Author: " + getAuthor());
+        System.out.println("Publication Date: " + getPublicationDate());
+        System.out.println("Research Domain: " + getResearchDomain());
+    }
+
+
 
     // methods
 

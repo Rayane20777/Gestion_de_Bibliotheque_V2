@@ -4,6 +4,7 @@ import java.util.Scanner;
 import Business.Books;
 import Business.Magazines;
 import Business.ScientificJournal;
+import Business.UniversityThesis;
 
 
 
@@ -68,7 +69,7 @@ public class AdminConsole {
                 manageScientificJournals();
                 break;
             case 4:
-                System.out.println("University Thesis");
+                manageUniversityThesis();
                 return;
             case 5:
                 System.out.println("Go back");
@@ -196,6 +197,8 @@ public class AdminConsole {
         }
     }
 
+
+
     private static void manageScientificJournals() {
         while(true){
             System.out.println("******************************");
@@ -236,6 +239,98 @@ public class AdminConsole {
 
             }
         }
+    }
+
+    private static void manageUniversityThesis() {
+        while(true){
+            System.out.println("******************************");
+            System.out.println("Choose an option:");
+            System.out.println("1. Add a University Thesis");
+            System.out.println("2. Remove a University Thesis");
+            System.out.println("3. Update a University Thesis");
+            System.out.println("4. Display all University Thesis");
+            System.out.println("5. Go back");
+            System.out.println("6. Exit program");
+            System.out.println("******************************");
+
+            Scanner prompt = new Scanner(System.in);
+            int choice = prompt.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addUniversityThesis(prompt);
+                    break;
+                case 2:
+                    removeUniversityThesis(prompt);
+                    break;
+                case 3:
+                    updateUniversityThesis(prompt);
+                    break;
+                case 4:
+                    displayUniversityThesis();
+                    break;
+                case 5:
+                    System.out.println("Go back");
+                    return;
+                case 6:
+                    System.out.println("exit program");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+
+            }
+        }
+    }
+
+    // University Thesis methods ********************************************
+
+    private static void addUniversityThesis(Scanner prompt) {
+        System.out.println("Enter University Thesis ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter Title:");
+        String title = prompt.nextLine();
+
+        System.out.println("Enter Author:");
+        String author = prompt.nextLine();
+
+        System.out.println("Enter Publication Date (YYYY-MM-DD):");
+        String publicationDate = prompt.nextLine();
+
+        System.out.println("Enter research domain:");
+        String researchDomain = prompt.nextLine();
+
+        UniversityThesis.addUniversityThesis(id, title, author, publicationDate, researchDomain);
+    }
+
+    private static void removeUniversityThesis(Scanner prompt) {
+        System.out.println("Enter University Thesis ID:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+        UniversityThesis.deleteUniversityThesis(id);
+    }
+
+    private static void updateUniversityThesis(Scanner prompt) {
+        System.out.println("Enter University Thesis ID to update:");
+        int id = prompt.nextInt();
+        prompt.nextLine();
+
+        System.out.println("Enter new Title:");
+        String title = prompt.nextLine();
+        System.out.println("Enter new Author:");
+        String author = prompt.nextLine();
+        System.out.println("Enter new Publication Date (YYYY-MM-DD):");
+        String publicationDate = prompt.nextLine();
+        System.out.println("Enter new research domain:");
+        String researchDomain = prompt.nextLine();
+
+        UniversityThesis.updateUniversityThesis(id, title, author, publicationDate, researchDomain);
+    }
+
+    private static void displayUniversityThesis() {
+        UniversityThesis.displayUniversityThesis();
     }
 
     // Scientific Journals methods ********************************************
