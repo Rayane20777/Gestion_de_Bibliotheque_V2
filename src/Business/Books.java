@@ -5,6 +5,7 @@ import DAO.Interfaces.BooksDAO;
 
 import java.util.List;
 
+
 public class Books extends Document{
     private String isbn;
     private static final BooksDAO booksDAO = new BooksDAOImpl();
@@ -65,6 +66,17 @@ public class Books extends Document{
             System.out.println("----------------------------");
         }
     }
+
+    public static void searchBook(String title) {
+        List<Books> booksList = booksDAO.findAll();
+        booksList.stream()
+                .filter(book -> book.getTitle().toLowerCase().contains(title.toLowerCase()))
+                .forEach(book -> {
+                    book.displayDetails();
+                    System.out.println("----------------------------");
+                });
+    }
+
 
     public void displayDetails() {
         System.out.println("ID: " + getId());
