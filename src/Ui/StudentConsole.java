@@ -35,7 +35,6 @@ public class StudentConsole {
                     if (book == null) {
                         System.out.println("Book not found");
                     } else {
-                        // Call the borrow method on the book object
                         book.borrow(docName, borrowerName);
                     }
                     break;
@@ -46,26 +45,31 @@ public class StudentConsole {
                     int studentId2 = prompt.nextInt();
                     System.out.println("Enter the return date:");
                     String returnDate2 = prompt.next();
-                    //Magazines.borrowMagazine(magazineId, studentId2, returnDate2);
                     break;
                 case 3:
-                    System.out.println("Enter the book id:");
-                    int bookId2 = prompt.nextInt();
+                    System.out.println("Enter the book name:");
+                    docName = prompt.nextLine();
+                    System.out.println("Enter your name:");
+                    borrowerName = prompt.nextLine();
+
+                    book = Books.bookId(docName);
+                    if (book == null) {
+                        System.out.println("Book not found");
+                    } else {
+                        book.turnBack(docName, borrowerName);
+                    }
                     break;
                 case 4:
                     System.out.println("Enter the magazine id:");
                     int magazineId2 = prompt.nextInt();
-                    //Magazines.returnMagazine(magazineId2);
                     break;
                 case 5:
                     System.out.println("Enter the book id:");
                     int bookId3 = prompt.nextInt();
-                    //Books.cancelBookBooking(bookId3);
                     break;
                 case 6:
                     System.out.println("Enter the magazine id:");
                     int magazineId3 = prompt.nextInt();
-                    //Magazines.cancelMagazineBooking(magazineId3);
                     break;
                 case 7:
                     return;

@@ -97,7 +97,7 @@ public class UniversityThesis extends Document {
     }
 
     @Override
-    public void turnBack() {
+    public void turnBack(String docName, String borrowerName) {
         System.out.println("The university thesis has been turned back.");
     }
 }

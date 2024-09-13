@@ -124,7 +124,28 @@ public class Books extends Document{
 
     }
     @Override
-    public void turnBack(){
+    public void turnBack(String docName, String borrowerName) {
+        Student student = Student.studentId(borrowerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+
+        Books book = Books.bookId(docName);
+        if (book == null) {
+            System.out.println("Book not found");
+            return;
+        }
+
+        if (book.getStatus() != Status.borrowed) {
+            System.out.println("Book is not borrowed");
+            return;
+        }
+
+        book.setBorrowerId(0);
+        book.setStatus(Status.available);
+        booksDAO.update(book);
+        System.out.println("Book turned back successfully");
 
     }
 

@@ -114,7 +114,7 @@ public class ScientificJournal extends Document {
     }
 
     @Override
-    public void turnBack() {
+    public void turnBack(String docName, String borrowerName) {
         System.out.println("Turning back a scientific journal");
     }
 }

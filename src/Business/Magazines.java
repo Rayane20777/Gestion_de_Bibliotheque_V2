@@ -97,7 +97,7 @@ public class Magazines extends Document{
     }
 
     @Override
-    public void turnBack(){
+    public void turnBack(String docName, String borrowerName){
 
     }
 
