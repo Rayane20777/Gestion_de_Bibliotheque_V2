@@ -77,6 +77,16 @@ public class UniversityThesis extends Document {
         System.out.println("Research Domain: " + getResearchDomain());
     }
 
+    public static UniversityThesis universityThesisId(String title) {
+        List<UniversityThesis> universityThesisList = universityThesisDAO.findAll();
+        for (UniversityThesis universityThesis : universityThesisList) {
+            if (universityThesis.getTitle().equals(title)) {
+                return universityThesis;
+            }
+        }
+        return null;
+    }
+
 
 
     // methods
@@ -93,11 +103,52 @@ public class UniversityThesis extends Document {
 
     @Override
     public void borrow(String docName, String borrowerName) {
-        System.out.println("The university thesis has been borrowed.");
+        Student student = Student.studentId(borrowerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+
+        UniversityThesis universityThesis = UniversityThesis.universityThesisId(docName);
+        if (universityThesis == null) {
+            System.out.println("University thesis not found");
+            return;
+        }
+
+        if (universityThesis.getStatus() == Status.borrowed) {
+            System.out.println("The university thesis is already borrowed.");
+            return;
+        }
+
+        universityThesis.setBorrowerId(student.getId());
+        universityThesis.setStatus(Status.borrowed);
+        universityThesisDAO.update(universityThesis);
+        System.out.println("The university thesis has been borrowed successfully.");
+
     }
 
     @Override
     public void turnBack(String docName, String borrowerName) {
-        System.out.println("The university thesis has been turned back.");
+        Student student = Student.studentId(borrowerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+
+        UniversityThesis universityThesis = UniversityThesis.universityThesisId(docName);
+        if (universityThesis == null) {
+            System.out.println("University thesis not found");
+            return;
+        }
+
+        if (universityThesis.getStatus() == Status.available) {
+            System.out.println("The university thesis is already available.");
+            return;
+        }
+
+        universityThesis.setBorrowerId(0);
+        universityThesis.setStatus(Status.available);
+        universityThesisDAO.update(universityThesis);
+        System.out.println("The university thesis has been returned successfully.");
     }
 }

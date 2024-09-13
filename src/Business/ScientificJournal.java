@@ -91,16 +91,66 @@ public class ScientificJournal extends Document {
 
 
 
-    public void returnDocument() {
-        System.out.println("Returning a scientific journal");
+    public static ScientificJournal scientificJournalId(String title) {
+        List<ScientificJournal> scientificJournalsList = scientificJournalDAO.findAll();
+        for (ScientificJournal scientificJournal : scientificJournalsList) {
+            if (scientificJournal.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                return scientificJournal;
+            }
+        }
+        return null;
     }
-
 
     // methods
 
     @Override
     public void borrow(String docName, String borrowerName) {
-        System.out.println("Borrowing a scientific journal");
+        Student student = Student.studentId(borrowerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+
+        ScientificJournal scientificJournal = scientificJournalId(docName);
+        if (scientificJournal == null) {
+            System.out.println("Scientific journal not found");
+            return;
+        }
+
+        if (scientificJournal.getStatus() == Status.borrowed) {
+            System.out.println("Scientific journal is already borrowed");
+            return;
+        }
+
+        scientificJournal.setBorrowerId(student.getId());
+        scientificJournal.setStatus(Status.borrowed);
+        scientificJournalDAO.update(scientificJournal);
+        System.out.println("Scientific journal borrowed successfully");
+    }
+
+    @Override
+    public void turnBack(String docName, String borrowerName) {
+        Student student = Student.studentId(borrowerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+
+        ScientificJournal scientificJournal = scientificJournalId(docName);
+        if (scientificJournal == null) {
+            System.out.println("Scientific journal not found");
+            return;
+        }
+
+        if (scientificJournal.getStatus() == Status.available) {
+            System.out.println("Scientific journal is not borrowed");
+            return;
+        }
+
+        scientificJournal.setBorrowerId(0);
+        scientificJournal.setStatus(Status.available);
+        scientificJournalDAO.update(scientificJournal);
+        System.out.println("Scientific journal returned successfully");
     }
 
     @Override
@@ -113,8 +163,5 @@ public class ScientificJournal extends Document {
         System.out.println("Canceling booking of a scientific journal");
     }
 
-    @Override
-    public void turnBack(String docName, String borrowerName) {
-        System.out.println("Turning back a scientific journal");
-    }
+
 }
