@@ -120,7 +120,7 @@ public class Books extends Document{
         book.setBorrowerId(student.getId());
         book.setStatus(Status.borrowed);
         booksDAO.update(book);
-        System.out.println("Book borrowed successfully by student ID: " + student.getId());
+        System.out.println("Book borrowed successfully ");
 
     }
     @Override

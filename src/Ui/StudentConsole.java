@@ -3,6 +3,7 @@ package Ui;
 import java.util.Scanner;
 
 import Business.Books;
+import Business.Magazines;
 
 public class StudentConsole {
 
@@ -31,7 +32,7 @@ public class StudentConsole {
                     String docName = prompt.nextLine();
                     System.out.println("Enter your name:");
                     String borrowerName = prompt.nextLine();
-                    Books book = Books.bookId(docName); // Assuming this method exists in Books class
+                    Books book = Books.bookId(docName);
                     if (book == null) {
                         System.out.println("Book not found");
                     } else {
@@ -39,13 +40,16 @@ public class StudentConsole {
                     }
                     break;
                 case 2:
-                    System.out.println("Enter the magazine id:");
-                    int magazineId = prompt.nextInt();
-                    System.out.println("Enter the student id:");
-                    int studentId2 = prompt.nextInt();
-                    System.out.println("Enter the return date:");
-                    String returnDate2 = prompt.next();
-                    break;
+                    System.out.println("Enter the book name:");
+                    String docName = prompt.nextLine();
+                    System.out.println("Enter your name:");
+                    String borrowerName = prompt.nextLine();
+                    Magazines magazine = Magazines.magazineId(docName);
+                    if (magazine == null) {
+                        System.out.println("Book not found");
+                    } else {
+                        magazine.borrow(docName, borrowerName);
+                    }
                 case 3:
                     System.out.println("Enter the book name:");
                     docName = prompt.nextLine();

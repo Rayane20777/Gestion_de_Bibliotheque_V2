@@ -72,6 +72,16 @@ public class Magazines extends Document{
                 });
     }
 
+    public static Magazines magazineId(String title){
+        List<Magazines> magazinesList = magazinesDAO.findAll();
+        for (Magazines magazine : magazinesList) {
+            if (magazine.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                return magazine;
+            }
+        }
+        return null;
+    }
+
     public void displayDetails() {
         System.out.println("ID: " + getId());
         System.out.println("Title: " + getTitle());
@@ -93,7 +103,21 @@ public class Magazines extends Document{
 
     @Override
     public void borrow(String docName, String borrowerName) {
-        System.out.println("Borrowing a magazine");
+        Student student = Student.studentId(borrowerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+        Magazines magazine = Magazines.magazineId(docName);
+        if (magazine == null) {
+            System.out.println("Magazine not found");
+            return;
+        }
+
+        magazine.setBorrowerId(student.getId());
+        magazine.setStatus(Status.borrowed);
+        magazinesDAO.update(magazine);
+        System.out.println("Magazine borrowed successfully");
     }
 
     @Override
