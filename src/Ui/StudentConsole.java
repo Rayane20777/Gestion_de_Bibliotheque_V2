@@ -67,9 +67,18 @@ public class StudentConsole {
                     }
                 }
                     break;
-                case 4:
-                    System.out.println("Enter the magazine id:");
-                    int magazineId2 = prompt.nextInt();
+                case 4: {
+                    System.out.println("Enter the magazine name:");
+                    String docName = prompt.nextLine();
+                    System.out.println("Enter your name:");
+                    String borrowerName = prompt.nextLine();
+                    Magazines magazine = Magazines.magazineId(docName);
+                    if (magazine == null) {
+                        System.out.println("Magazine not found");
+                    } else {
+                        magazine.turnBack(docName, borrowerName);
+                    }
+                }
                     break;
                 case 5:
                     System.out.println("Enter the book id:");

@@ -123,6 +123,21 @@ public class Magazines extends Document{
     @Override
     public void turnBack(String docName, String borrowerName){
 
+        Student student = Student.studentId(borrowerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+        Magazines magazine = Magazines.magazineId(docName);
+        if (magazine == null) {
+            System.out.println("Magazine not found");
+            return;
+        }
+
+        magazine.setBorrowerId(0);
+        magazine.setStatus(Status.available);
+        magazinesDAO.update(magazine);
+        System.out.println("Magazine returned successfully");
     }
 
     @Override
