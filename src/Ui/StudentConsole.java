@@ -27,7 +27,7 @@ public class StudentConsole {
             prompt.nextLine();
 
             switch (choice) {
-                case 1:
+                case 1: {
                     System.out.println("Enter the book name:");
                     String docName = prompt.nextLine();
                     System.out.println("Enter your name:");
@@ -38,8 +38,9 @@ public class StudentConsole {
                     } else {
                         book.borrow(docName, borrowerName);
                     }
+                }
                     break;
-                case 2:
+                case 2: {
                     System.out.println("Enter the book name:");
                     String docName = prompt.nextLine();
                     System.out.println("Enter your name:");
@@ -50,18 +51,21 @@ public class StudentConsole {
                     } else {
                         magazine.borrow(docName, borrowerName);
                     }
-                case 3:
-                    System.out.println("Enter the book name:");
-                    docName = prompt.nextLine();
-                    System.out.println("Enter your name:");
-                    borrowerName = prompt.nextLine();
+                }
+                break;
 
-                    book = Books.bookId(docName);
+                case 3: {
+                    System.out.println("Enter the book name:");
+                    String docName = prompt.nextLine();
+                    System.out.println("Enter your name:");String borrowerName = prompt.nextLine();
+
+                    Books book = Books.bookId(docName);
                     if (book == null) {
                         System.out.println("Book not found");
                     } else {
                         book.turnBack(docName, borrowerName);
                     }
+                }
                     break;
                 case 4:
                     System.out.println("Enter the magazine id:");
