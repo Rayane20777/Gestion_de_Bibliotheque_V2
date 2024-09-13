@@ -81,12 +81,24 @@ public class Student extends User {
 
     }
 
+
     public void displayDetails() {
         System.out.println("ID : " + getId());
         System.out.println("Name : " + getName());
         System.out.println("Email : " + getEmail());
         System.out.println("Faculty : " + getFaculty());
         System.out.println("Grade : " + getGrade());
+    }
+
+    public static Student studentId(String borrowerName) {
+        List<Student> studentsList = studentDAO.findAll();
+        for (Student student : studentsList) {
+            if (student.getName().equals(borrowerName)) {
+                return student;
+            }
+        }
+        System.out.printf("Student with name %s not found%n", borrowerName);
+        return null; // Indicate that the student was not found
     }
 
 

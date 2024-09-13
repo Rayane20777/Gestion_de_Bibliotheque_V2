@@ -92,7 +92,7 @@ public class UniversityThesis extends Document {
     }
 
     @Override
-    public void borrow() {
+    public void borrow(String docName, String borrowerName) {
         System.out.println("The university thesis has been borrowed.");
     }
 

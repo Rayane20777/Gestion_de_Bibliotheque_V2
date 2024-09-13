@@ -99,7 +99,7 @@ public class ScientificJournal extends Document {
     // methods
 
     @Override
-    public void borrow() {
+    public void borrow(String docName, String borrowerName) {
         System.out.println("Borrowing a scientific journal");
     }
 

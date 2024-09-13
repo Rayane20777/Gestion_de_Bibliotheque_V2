@@ -76,6 +76,16 @@ public class Books extends Document{
                 });
     }
 
+    public static Books bookId(String title) {
+        List<Books> booksList = booksDAO.findAll();
+        for (Books book : booksList) {
+            if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                return book;
+            }
+        }
+        return null;
+    }
+
 
     public void displayDetails() {
         System.out.println("ID: " + getId());
@@ -88,10 +98,31 @@ public class Books extends Document{
 
 
     @Override
-    public void borrow() {
-        System.out.println("Borrowing a book");
-    }
+    public void borrow(String docName, String borrowerName) {
+        Student student = Student.studentId(borrowerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
 
+        }
+
+        Books book = Books.bookId(docName);
+        if (book == null) {
+            System.out.println("Book not found");
+            return;
+        }
+
+        if (book.getStatus() != Status.available) {
+            System.out.println("Book is not available for borrowing");
+            return;
+        }
+
+        book.setBorrowerId(student.getId());
+        book.setStatus(Status.borrowed);
+        booksDAO.update(book);
+        System.out.println("Book borrowed successfully by student ID: " + student.getId());
+
+    }
     @Override
     public void turnBack(){
 
