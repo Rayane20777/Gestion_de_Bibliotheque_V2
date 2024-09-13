@@ -82,11 +82,10 @@ public class StudentConsole {
                     break;
                 case 5:
                     System.out.println("Enter the book id:");
-                    int bookId3 = prompt.nextInt();
+
                     break;
                 case 6:
                     System.out.println("Enter the magazine id:");
-                    int magazineId3 = prompt.nextInt();
                     break;
                 case 7:
                     return;

@@ -112,6 +112,11 @@ public class Books extends Document{
             return;
         }
 
+        if (book.getStatus() == Status.borrowed) {
+            book(book, student);
+            return;
+        }
+
         if (book.getStatus() != Status.available) {
             System.out.println("Book is not available for borrowing");
             return;
@@ -150,7 +155,7 @@ public class Books extends Document{
     }
 
     @Override
-    public void book(){
+    public void book(Books docId, Student bookerId){
 
     }
 

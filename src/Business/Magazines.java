@@ -141,7 +141,7 @@ public class Magazines extends Document{
     }
 
     @Override
-    public void book(){
+    public void book(Books docId, Student bookerId){
 
     }
 
