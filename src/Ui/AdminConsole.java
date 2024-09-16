@@ -3,14 +3,12 @@ package Ui;
 import java.util.Scanner;
 
 import Business.*;
-
+import Resources.InputValidator;
 
 public class AdminConsole {
-    
-    
     public static void admin(){
         Scanner prompt = new Scanner(System.in);
-        
+
         System.out.println("******************************");
         System.out.println("Choose an option:");
         System.out.println("1. Manage documents");
@@ -18,22 +16,18 @@ public class AdminConsole {
         System.out.println("3. exit");
         System.out.println("******************************");
 
-        int choice = prompt.nextInt();
+        int choice = InputValidator.intValidator(prompt);
 
         switch (choice) {
             case 1:
-                docManagement();
+                docManagement(prompt);
                 break;
             case 2:
-                userManagement();
+                userManagement(prompt);
                 break;
             case 3:
                 System.out.println("go back");
                 return;
-            case 4:
-                System.out.println("exit program");
-                System.exit(0);
-                break;
             default:
                 System.out.println("Invalid choice");
 
@@ -41,7 +35,7 @@ public class AdminConsole {
 
     }
 
-    public static void docManagement(){
+    public static void docManagement(Scanner prompt){
         System.out.println("******************************");
         System.out.println("Choose an option:");
         System.out.println("1. Manage Books");
@@ -52,8 +46,7 @@ public class AdminConsole {
         System.out.println("6. Exit program");
         System.out.println("******************************");
 
-        Scanner prompt = new Scanner(System.in);
-        int choice = prompt.nextInt();
+        int choice = InputValidator.intValidator(prompt);
 
         switch (choice) {
             case 1:
@@ -63,10 +56,10 @@ public class AdminConsole {
                 manageMagazines(prompt);
                 break;
             case 3:
-                manageScientificJournals();
+                manageScientificJournals(prompt);
                 break;
             case 4:
-                manageUniversityThesis();
+                manageUniversityThesis(prompt);
                 return;
             case 5:
                 System.out.println("Go back");
@@ -81,7 +74,7 @@ public class AdminConsole {
         }
     }
 
-    public static void userManagement(){
+    public static void userManagement(Scanner prompt){
         System.out.println("******************************");
         System.out.println("Choose an option:");
         System.out.println("1. Manage Student");
@@ -90,15 +83,14 @@ public class AdminConsole {
         System.out.println("4. Exit program");
         System.out.println("******************************");
 
-        Scanner prompt = new Scanner(System.in);
-        int choice = prompt.nextInt();
+        int choice = InputValidator.intValidator(prompt);
 
         switch (choice) {
             case 1:
-                manageStudent();
+                manageStudent(prompt);
                 break;
             case 2:
-                professorManagement();
+                professorManagement(prompt);
                 break;
             case 3:
                 System.out.println("Go back");
@@ -113,7 +105,7 @@ public class AdminConsole {
         }
     }
 
-    public static void manageStudent(){
+    public static void manageStudent(Scanner prompt){
         while(true) {
 
             System.out.println("******************************");
@@ -127,8 +119,7 @@ public class AdminConsole {
             System.out.println("7. Exit program");
             System.out.println("******************************");
 
-            Scanner prompt = new Scanner(System.in);
-            int choice = prompt.nextInt();
+            int choice = InputValidator.intValidator(prompt);
 
             switch (choice) {
                 case 1:
@@ -162,7 +153,7 @@ public class AdminConsole {
         }
     }
 
-    public static void professorManagement(){
+    public static void professorManagement(Scanner prompt){
         while(true){
             System.out.println("******************************");
             System.out.println("Choose an option:");
@@ -175,8 +166,7 @@ public class AdminConsole {
             System.out.println("7. Exit program");
             System.out.println("******************************");
 
-            Scanner prompt = new Scanner(System.in);
-            int choice = prompt.nextInt();
+            int choice = InputValidator.intValidator(prompt);
 
             switch (choice) {
                 case 1:
@@ -224,7 +214,7 @@ public class AdminConsole {
             System.out.println("7. Exit program");
             System.out.println("******************************");
 
-            int choice = prompt.nextInt();
+            int choice = InputValidator.intValidator(prompt);
 
             switch (choice) {
                 case 1:
@@ -271,7 +261,7 @@ public class AdminConsole {
             System.out.println("7. Exit program");
             System.out.println("******************************");
 
-            int choice = prompt.nextInt();
+            int choice = InputValidator.intValidator(prompt);
 
             switch (choice) {
                 case 1:
@@ -304,9 +294,7 @@ public class AdminConsole {
         }
     }
 
-
-
-    private static void manageScientificJournals() {
+    private static void manageScientificJournals(Scanner prompt) {
         while(true){
             System.out.println("******************************");
             System.out.println("Choose an option:");
@@ -319,8 +307,7 @@ public class AdminConsole {
             System.out.println("7. Exit program");
             System.out.println("******************************");
 
-            Scanner prompt = new Scanner(System.in);
-            int choice = prompt.nextInt();
+            int choice = InputValidator.intValidator(prompt);
 
             switch (choice) {
                 case 1:
@@ -354,7 +341,7 @@ public class AdminConsole {
         }
     }
 
-    private static void manageUniversityThesis() {
+    private static void manageUniversityThesis(Scanner prompt) {
         while(true){
             System.out.println("******************************");
             System.out.println("Choose an option:");
@@ -367,8 +354,7 @@ public class AdminConsole {
             System.out.println("7. Exit program");
             System.out.println("******************************");
 
-            Scanner prompt = new Scanner(System.in);
-            int choice = prompt.nextInt();
+            int choice = InputValidator.intValidator(prompt);
 
             switch (choice) {
                 case 1:
@@ -406,7 +392,7 @@ public class AdminConsole {
 
     private static void addUniversityThesis(Scanner prompt) {
         System.out.println("Enter University Thesis ID:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter Title:");
@@ -426,14 +412,14 @@ public class AdminConsole {
 
     private static void removeUniversityThesis(Scanner prompt) {
         System.out.println("Enter University Thesis ID:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
         UniversityThesis.deleteUniversityThesis(id);
     }
 
     private static void updateUniversityThesis(Scanner prompt) {
         System.out.println("Enter University Thesis ID to update:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter new Title:");
@@ -453,9 +439,10 @@ public class AdminConsole {
     }
 
     // Scientific Journals methods ********************************************
+
     private static void addScientificJournal(Scanner prompt) {
         System.out.println("Enter Scientific Journal ID:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter Title:");
@@ -479,15 +466,14 @@ public class AdminConsole {
 
     private static void removeScientificJournal(Scanner prompt) {
         System.out.println("Enter Scientific Journal ID:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
         ScientificJournal.deleteScientificJournal(id);
     }
 
-
     private static void updateScientificJournal(Scanner prompt) {
         System.out.println("Enter Scientific Journal ID to update:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter new Title:");
@@ -510,9 +496,10 @@ public class AdminConsole {
     }
 
     // Books methods ***********************************************************
+
     private static void addBook(Scanner prompt) {
         System.out.println("Enter Book ID:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter Title:");
@@ -531,14 +518,14 @@ public class AdminConsole {
 
     private static void removeBook(Scanner prompt) {
         System.out.println("Enter Book ID:");
-        int id = prompt.nextInt();
-        prompt.nextLine();
+        int id = InputValidator.intValidator(prompt);
+        prompt .nextLine();
         Books.deleteBook(id);
     }
 
     private static void updateBook(Scanner prompt) {
         System.out.println("Enter Book ID to update:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter new Title:");
@@ -561,7 +548,7 @@ public class AdminConsole {
 
     private static void addMagazine(Scanner prompt) {
         System.out.println("Enter Magazine ID:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter Title:");
@@ -574,7 +561,7 @@ public class AdminConsole {
         String publicationDate = prompt.nextLine();
 
         System.out.println("Enter ISBN:");
-        int number = prompt.nextInt();
+        int number = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         Magazines.addMagazine(id, title, author, publicationDate, number);
@@ -582,14 +569,14 @@ public class AdminConsole {
 
     private static void removeMagazine(Scanner prompt) {
         System.out.println("Enter Magazine ID:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
         Magazines.deleteMagazine(id);
     }
 
     private static void updateMagazine(Scanner prompt) {
         System.out.println("Enter Magazine ID to update:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter new Title:");
@@ -599,7 +586,7 @@ public class AdminConsole {
         System.out.println("Enter new Publication Date (YYYY-MM-DD):");
         String publicationDate = prompt.nextLine();
         System.out.println("Enter new ISBN:");
-        int number = prompt.nextInt();
+        int number = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         Magazines.updateMagazine(id, title, author, publicationDate, number);
@@ -611,7 +598,7 @@ public class AdminConsole {
 
     private static void addStudent(Scanner prompt) {
         System.out.println("Enter Student ID:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter Name:");
@@ -633,14 +620,14 @@ public class AdminConsole {
 
     private static void removeStudent(Scanner prompt) {
         System.out.println("Enter Student ID:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
         Student.removeStudent(id);
     }
 
     private static void updateStudent(Scanner prompt) {
         System.out.println("Enter Student ID to update:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter new Name:");
@@ -664,7 +651,7 @@ public class AdminConsole {
 
     private static void addProfessor(Scanner prompt) {
         System.out.println("Enter Professor ID:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter Name:");
@@ -682,14 +669,14 @@ public class AdminConsole {
 
     private static void removeProfessor(Scanner prompt) {
         System.out.println("Enter Professor ID:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
         Professor.removeProfessor(id);
     }
 
     private static void updateProfessor(Scanner prompt) {
         System.out.println("Enter Professor ID to update:");
-        int id = prompt.nextInt();
+        int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
 
         System.out.println("Enter new Name:");

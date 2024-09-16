@@ -27,8 +27,8 @@ public class ProfessorConsole {
             System.out.println("12. Exit program");
             System.out.println("******************************");
 
-            int choice = InputValidator.intValidator(prompt); // Use intValidator for input validation
-            prompt.nextLine(); // Consume the newline character
+            int choice = InputValidator.intValidator(prompt);
+            prompt.nextLine();
 
             switch (choice) {
                 case 1:
