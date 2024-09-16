@@ -138,16 +138,27 @@ public class Books extends Document{
             return;
         }
 
-        if (book.getStatus() == Status.borrowed) {
-            System.out.println("Book is not borrowed");
+        if (book.getBorrowerId() != student.getId()) {
+            System.out.println("Book is not borrowed by this student.");
             return;
         }
 
         book.setBorrowerId(0);
-        book.setStatus(Status.available);
-        booksDAO.update(book);
-        System.out.println("Book turned back successfully");
 
+        if (book.getBookerId() != 0) {
+            int newBorrowerId = book.getBookerId();
+            book.setBorrowerId(newBorrowerId);
+            book.setBookerId(0);
+            book.setStatus(Status.borrowed);
+
+            booksDAO.update(book);
+
+
+        } else {
+            book.setStatus(Status.available);
+            booksDAO.update(book);
+            System.out.println("Book turned back successfully and is now available.");
+        }
     }
 
     @Override
