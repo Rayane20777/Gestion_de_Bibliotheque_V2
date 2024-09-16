@@ -98,7 +98,19 @@ public class StudentConsole {
                 case 6:
 
                     break;
-                case 7:
+                case 7:{
+                    System.out.println("Enter the book name:");
+                    String docName = prompt.nextLine();
+                    System.out.println("Enter your name:");
+                    String bookerName = prompt.nextLine();
+                    Books book = Books.bookId(docName);
+                    if (book == null) {
+                        System.out.println("Book not found");
+                    } else {
+                        book.cancelBooking(docName, bookerName);
+                    }
+                }
+
                     break;
                 case 8:
                     break;

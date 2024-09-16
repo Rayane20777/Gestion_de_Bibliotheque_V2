@@ -97,7 +97,7 @@ public class UniversityThesis extends Document {
     }
 
     @Override
-    public void cancelBooking() {
+    public void cancelBooking(String docName, String bookerName) {
         System.out.println("The university thesis booking has been canceled.");
     }
 

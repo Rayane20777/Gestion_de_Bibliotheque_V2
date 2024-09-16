@@ -159,7 +159,7 @@ public class ScientificJournal extends Document {
     }
 
     @Override
-    public void cancelBooking() {
+    public void cancelBooking(String docName, String bookerName) {
         System.out.println("Canceling booking of a scientific journal");
     }
 

@@ -146,7 +146,7 @@ public class Magazines extends Document{
     }
 
     @Override
-    public void cancelBooking(){
+    public void cancelBooking(String docName, String bookerName){
 
     }
 }

@@ -5,5 +5,5 @@ import Business.Student;
 
 public interface Bookable {
     void book(String docName, String bookerName);
-    void cancelBooking();
+    void cancelBooking(String docName, String bookerName);
 }

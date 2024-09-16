@@ -163,11 +163,17 @@ public class Books extends Document{
             System.out.println("Book not found");
             return;
         }
+        if (book.getStatus() == Status.booked) {
+            System.out.println("Book is already booked.");
+            return;
+        }
 
-        if (book.getStatus() != Status.booked) {
+        if (book.getStatus() != Status.borrowed) {
             System.out.println("Book is available for borrowing, no need to book.");
             return;
         }
+
+
 
         book.setBookerId(student.getId());
         book.setStatus(Status.booked);
@@ -177,8 +183,28 @@ public class Books extends Document{
     }
 
     @Override
-    public void cancelBooking(){
+    public void cancelBooking(String docName, String bookerName){
+        Student student = Student.studentId(bookerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
 
+        Books book = Books.bookId(docName);
+        if (book == null) {
+            System.out.println("Book not found");
+            return;
+        }
+
+        if (book.getBookerId() != student.getId()) {
+            System.out.println("You have not booked this book.");
+            return;
+        }
+
+        book.setBookerId(0);
+        book.setStatus(Status.borrowed);
+        booksDAO.update(book);
+        System.out.println("Booking canceled successfully.");
     }
 
 }
