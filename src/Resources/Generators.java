@@ -10,5 +10,6 @@ public class Generators {
             isbn.append((int) (Math.random() * 10));
         }
         return isbn.toString();
+
     }
 }

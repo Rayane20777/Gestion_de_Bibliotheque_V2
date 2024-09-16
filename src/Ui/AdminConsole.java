@@ -417,6 +417,7 @@ public class AdminConsole {
         String researchDomain = prompt.nextLine();
 
         UniversityThesis.addUniversityThesis(id, title, author, publicationDate, researchDomain);
+        System.gc();
     }
 
     private static void removeUniversityThesis(Scanner prompt) {
@@ -424,6 +425,7 @@ public class AdminConsole {
         int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
         UniversityThesis.deleteUniversityThesis(id);
+        System.gc();
     }
 
     private static void updateUniversityThesis(Scanner prompt) {
@@ -449,6 +451,7 @@ public class AdminConsole {
         String researchDomain = prompt.nextLine();
 
         UniversityThesis.updateUniversityThesis(id, title, author, publicationDate, researchDomain);
+        System.gc();
     }
 
     private static void displayUniversityThesis() {
@@ -487,6 +490,7 @@ public class AdminConsole {
 
 
         ScientificJournal.addScientificJournal(id, title, author, publicationDate, field, university);
+        System.gc();
     }
 
     private static void removeScientificJournal(Scanner prompt) {
@@ -494,6 +498,7 @@ public class AdminConsole {
         int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
         ScientificJournal.deleteScientificJournal(id);
+        System.gc();
     }
 
     private static void updateScientificJournal(Scanner prompt) {
@@ -522,6 +527,7 @@ public class AdminConsole {
 
 
         ScientificJournal.updateScientificJournal(id, title, author, publicationDate, field, university);
+        System.gc();
     }
 
     private static void displayScientificJournals() {
@@ -555,6 +561,7 @@ public class AdminConsole {
 
 
         Books.addBook(id, title, author, publicationDate);
+        System.gc();
     }
 
     private static void removeBook(Scanner prompt) {
@@ -562,6 +569,7 @@ public class AdminConsole {
         int id = InputValidator.intValidator(prompt);
         prompt .nextLine();
         Books.deleteBook(id);
+        System.gc();
     }
 
     private static void updateBook(Scanner prompt) {
@@ -587,6 +595,7 @@ public class AdminConsole {
         String isbn = prompt.nextLine();
 
         Books.updateBook(id, title, author, publicationDate, isbn);
+        System.gc();
     }
 
     private static void displayBooks() {
@@ -622,6 +631,7 @@ public class AdminConsole {
         prompt.nextLine();
 
         Magazines.addMagazine(id, title, author, publicationDate, number);
+        System.gc();
     }
 
     private static void removeMagazine(Scanner prompt) {
@@ -629,6 +639,7 @@ public class AdminConsole {
         int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
         Magazines.deleteMagazine(id);
+        System.gc();
     }
 
     private static void updateMagazine(Scanner prompt) {
@@ -655,6 +666,7 @@ public class AdminConsole {
         prompt.nextLine();
 
         Magazines.updateMagazine(id, title, author, publicationDate, number);
+        System.gc();
     }
 
     private static void displayMagazines() {
@@ -689,6 +701,7 @@ public class AdminConsole {
 
         Student.addStudent(id, name, email, faculty, grade);
 
+        System.gc();
     }
 
     private static void removeStudent(Scanner prompt) {
@@ -696,6 +709,7 @@ public class AdminConsole {
         int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
         Student.removeStudent(id);
+        System.gc();
     }
 
     private static void updateStudent(Scanner prompt) {
@@ -723,6 +737,7 @@ public class AdminConsole {
         Student.updateStudent(id, name, email, faculty, grade);
 
 
+        System.gc();
     }
 
     private static void displayStudents() {
@@ -746,6 +761,7 @@ public class AdminConsole {
 
         Professor.addProfessor(id, name, email, department);
 
+        System.gc();
     }
 
     private static void removeProfessor(Scanner prompt) {
@@ -753,6 +769,7 @@ public class AdminConsole {
         int id = InputValidator.intValidator(prompt);
         prompt.nextLine();
         Professor.removeProfessor(id);
+        System.gc();
     }
 
     private static void updateProfessor(Scanner prompt) {
@@ -768,6 +785,7 @@ public class AdminConsole {
         String department = prompt.nextLine();
 
         Professor.updateProfessor(id, name, email, department);
+        System.gc();
     }
 
     private static void displayProfessors() {
