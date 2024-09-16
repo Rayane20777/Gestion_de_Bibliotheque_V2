@@ -5,6 +5,7 @@ import java.util.Scanner;
 import Business.*;
 import Resources.InputValidator;
 
+
 public class AdminConsole {
     public static void admin(){
         Scanner prompt = new Scanner(System.in);
@@ -401,8 +402,16 @@ public class AdminConsole {
         System.out.println("Enter Author:");
         String author = prompt.nextLine();
 
-        System.out.println("Enter Publication Date (YYYY-MM-DD):");
-        String publicationDate = prompt.nextLine();
+        System.out.println("Enter Publication Date (yyyy-MM-dd):");
+        String publicationDate;
+        while (true) {
+            publicationDate = prompt.nextLine();
+            if (InputValidator.dateValidator(publicationDate)) {
+                break;
+            } else {
+                System.out.println("Invalid date. Please enter a valid publication date (yyyy-MM-dd):");
+            }
+        }
 
         System.out.println("Enter research domain:");
         String researchDomain = prompt.nextLine();
@@ -426,8 +435,16 @@ public class AdminConsole {
         String title = prompt.nextLine();
         System.out.println("Enter new Author:");
         String author = prompt.nextLine();
-        System.out.println("Enter new Publication Date (YYYY-MM-DD):");
-        String publicationDate = prompt.nextLine();
+        System.out.println("Enter Publication Date (yyyy-MM-dd):");
+        String publicationDate;
+        while (true) {
+            publicationDate = prompt.nextLine();
+            if (InputValidator.dateValidator(publicationDate)) {
+                break;
+            } else {
+                System.out.println("Invalid date. Please enter a valid publication date (yyyy-MM-dd):");
+            }
+        }
         System.out.println("Enter new research domain:");
         String researchDomain = prompt.nextLine();
 
@@ -451,8 +468,16 @@ public class AdminConsole {
         System.out.println("Enter Author:");
         String author = prompt.nextLine();
 
-        System.out.println("Enter Publication Date (YYYY-MM-DD):");
-        String publicationDate = prompt.nextLine();
+        System.out.println("Enter Publication Date (yyyy-MM-dd):");
+        String publicationDate;
+        while (true) {
+            publicationDate = prompt.nextLine();
+            if (InputValidator.dateValidator(publicationDate)) {
+                break;
+            } else {
+                System.out.println("Invalid date. Please enter a valid publication date (yyyy-MM-dd):");
+            }
+        }
 
         System.out.println("Enter filed:");
         String field = prompt.nextLine();
@@ -480,8 +505,16 @@ public class AdminConsole {
         String title = prompt.nextLine();
         System.out.println("Enter new Author:");
         String author = prompt.nextLine();
-        System.out.println("Enter new Publication Date (YYYY-MM-DD):");
-        String publicationDate = prompt.nextLine();
+        System.out.println("Enter Publication Date (yyyy-MM-dd):");
+        String publicationDate;
+        while (true) {
+            publicationDate = prompt.nextLine();
+            if (InputValidator.dateValidator(publicationDate)) {
+                break;
+            } else {
+                System.out.println("Invalid date. Please enter a valid publication date (yyyy-MM-dd):");
+            }
+        }
         System.out.println("Enter new field:");
         String field = prompt.nextLine();
         System.out.println("Enter new university:");
@@ -508,8 +541,16 @@ public class AdminConsole {
         System.out.println("Enter Author:");
         String author = prompt.nextLine();
 
-        System.out.println("Enter Publication Date (YYYY-MM-DD):");
-        String publicationDate = prompt.nextLine();
+        System.out.println("Enter Publication Date (yyyy-MM-dd):");
+        String publicationDate;
+        while (true) {
+            publicationDate = prompt.nextLine();
+            if (InputValidator.dateValidator(publicationDate)) {
+                break;
+            } else {
+                System.out.println("Invalid date. Please enter a valid publication date (yyyy-MM-dd):");
+            }
+        }
 
 
 
@@ -532,8 +573,16 @@ public class AdminConsole {
         String title = prompt.nextLine();
         System.out.println("Enter new Author:");
         String author = prompt.nextLine();
-        System.out.println("Enter new Publication Date (YYYY-MM-DD):");
-        String publicationDate = prompt.nextLine();
+        System.out.println("Enter Publication Date (yyyy-MM-dd):");
+        String publicationDate;
+        while (true) {
+            publicationDate = prompt.nextLine();
+            if (InputValidator.dateValidator(publicationDate)) {
+                break;
+            } else {
+                System.out.println("Invalid date. Please enter a valid publication date (yyyy-MM-dd):");
+            }
+        }
         System.out.println("Enter new ISBN:");
         String isbn = prompt.nextLine();
 
@@ -557,8 +606,16 @@ public class AdminConsole {
         System.out.println("Enter Author:");
         String author = prompt.nextLine();
 
-        System.out.println("Enter Publication Date (YYYY-MM-DD):");
-        String publicationDate = prompt.nextLine();
+        System.out.println("Enter Publication Date (yyyy-MM-dd):");
+        String publicationDate;
+        while (true) {
+            publicationDate = prompt.nextLine();
+            if (InputValidator.dateValidator(publicationDate)) {
+                break;
+            } else {
+                System.out.println("Invalid date. Please enter a valid publication date (yyyy-MM-dd):");
+            }
+        }
 
         System.out.println("Enter ISBN:");
         int number = InputValidator.intValidator(prompt);
@@ -583,8 +640,16 @@ public class AdminConsole {
         String title = prompt.nextLine();
         System.out.println("Enter new Author:");
         String author = prompt.nextLine();
-        System.out.println("Enter new Publication Date (YYYY-MM-DD):");
-        String publicationDate = prompt.nextLine();
+        System.out.println("Enter Publication Date (yyyy-MM-dd):");
+        String publicationDate;
+        while (true) {
+            publicationDate = prompt.nextLine();
+            if (InputValidator.dateValidator(publicationDate)) {
+                break;
+            } else {
+                System.out.println("Invalid date. Please enter a valid publication date (yyyy-MM-dd):");
+            }
+        }
         System.out.println("Enter new ISBN:");
         int number = InputValidator.intValidator(prompt);
         prompt.nextLine();
@@ -605,7 +670,15 @@ public class AdminConsole {
         String name = prompt.nextLine();
 
         System.out.println("Enter Email:");
-        String email = prompt.nextLine();
+        String email;
+        while (true) {
+            email = prompt.nextLine();
+            if (InputValidator.emailValidator(email)) {
+                break;
+            } else {
+                System.out.println("Invalid email. Please enter a valid email address:");
+            }
+        }
 
 
         System.out.println("Enter Faculty:");
@@ -633,7 +706,15 @@ public class AdminConsole {
         System.out.println("Enter new Name:");
         String name = prompt.nextLine();
         System.out.println("Enter new Email:");
-        String email = prompt.nextLine();
+        String email;
+        while (true) {
+            email = prompt.nextLine();
+            if (InputValidator.emailValidator(email)) {
+                break;
+            } else {
+                System.out.println("Invalid email. Please enter a valid email address:");
+            }
+        }
         System.out.println("Enter new Faculty:");
         String faculty = prompt.nextLine();
         System.out.println("Enter new Grade:");
