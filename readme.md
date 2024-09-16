@@ -90,3 +90,41 @@ This project enhances an existing console-based library management application b
 ### Garbage Collection
 
 - **Memory Management**: Use the "try-with-resources" pattern for PostgreSQL connections and explicitly close connections in DAO methods.
+
+## 🛠️ How to Use ShelfMaster
+
+### Prerequisites
+
+Ensure you have the following installed on your machine:
+
+- **Java 8** or later
+- **PostgreSQL** database with the necessary tables and schema (setup instructions below)
+- **JDBC Driver** for PostgreSQL
+- A console or terminal to run the application
+
+### Installation
+
+1. Clone this repository to your local machine:
+   ```bash
+   git clone https://github.com/Rayane20777/Gestion_de_Bibliotheque_V2.git
+   cd Gestion_de_Bibliotheque_V2
+    ```
+
+2. Create a PostgreSQL database and run the SQL script to set up the necessary tables:
+    ```bash
+    psql -U yourusername -d yourdatabase -f resources/example.sql
+    ```
+    Replace `yourusername` and `yourdatabase` with your PostgreSQL username and database name.
+
+3. Update the database connection details in the `DatabaseConnection` class:
+    ```java
+    private static final String URL = "jdbc:postgresql://localhost:5432/yourdatabase";
+    private static final String USER = "yourusername";
+    private static final String PASSWORD = "yourpassword";
+    ```
+### Running the JAR File
+To run the application, execute the following command:
+```bash
+     cd out/artifacts/Library_jar
+     java -jar Library.jar
+```
