@@ -134,19 +134,80 @@ public class Magazines extends Document{
             return;
         }
 
+        if (magazine.getBorrowerId() != student.getId()) {
+            System.out.println("Magazine is not borrowed by this student.");
+            return;
+        }
         magazine.setBorrowerId(0);
-        magazine.setStatus(Status.available);
-        magazinesDAO.update(magazine);
-        System.out.println("Magazine returned successfully");
+
+
+        if (magazine.getBookerId() != 0) {
+            int newBorrowerId = magazine.getBookerId();
+            magazine.setBorrowerId(newBorrowerId);
+            magazine.setBookerId(0);
+            magazine.setStatus(Status.borrowed);
+
+            magazinesDAO.update(magazine);
+
+
+        } else {
+            magazine.setStatus(Status.available);
+            magazinesDAO.update(magazine);
+            System.out.println("Magazine turned back successfully and is now available.");
+        }
     }
 
     @Override
     public void book(String docName, String bookerName){
+        Student student = Student.studentId(bookerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+        Magazines magazine = Magazines.magazineId(docName);
+        if (magazine == null) {
+            System.out.println("Magazine not found");
+            return;
+        }
+        if (magazine.getStatus() == Status.booked) {
+            System.out.println("Magazine is already booked.");
+            return;
+        }
+
+        if (magazine.getStatus() != Status.borrowed) {
+            System.out.println("Magazine is available for borrowing, no need to magazine.");
+            return;
+        }
+
+        magazine.setBookerId(student.getId());
+        magazine.setStatus(Status.booked);
+        magazinesDAO.update(magazine);
+        System.out.println("Magazine booked successfully");
 
     }
 
     @Override
     public void cancelBooking(String docName, String bookerName){
+        Student student = Student.studentId(bookerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+        Magazines magazine = Magazines.magazineId(docName);
+        if (magazine == null) {
+            System.out.println("Magazine not found");
+            return;
+        }
+
+        if (magazine.getBookerId() != student.getId()) {
+            System.out.println("You have not booked this magazine.");
+            return;
+        }
+
+        magazine.setBookerId(0);
+        magazine.setStatus(Status.borrowed);
+        magazinesDAO.update(magazine);
+        System.out.println("Booking cancelled successfully");
 
     }
 }

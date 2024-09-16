@@ -95,8 +95,18 @@ public class StudentConsole {
                     }
                 }
                     break;
-                case 6:
-
+                case 6:{
+                    System.out.println("Enter the magazine name:");
+                    String docName = prompt.nextLine();
+                    System.out.println("Enter your name:");
+                    String bookerName = prompt.nextLine();
+                    Magazines magazine = Magazines.magazineId(docName);
+                    if (magazine == null) {
+                        System.out.println("Magazine not found");
+                    } else {
+                        magazine.book(docName, bookerName);
+                    }
+                }
                     break;
                 case 7:{
                     System.out.println("Enter the book name:");
@@ -112,7 +122,18 @@ public class StudentConsole {
                 }
 
                     break;
-                case 8:
+                case 8:{
+                    System.out.println("Enter the magazine name:");
+                    String docName = prompt.nextLine();
+                    System.out.println("Enter your name:");
+                    String bookerName = prompt.nextLine();
+                    Magazines magazine = Magazines.magazineId(docName);
+                    if (magazine == null) {
+                        System.out.println("Magazine not found");
+                    } else {
+                        magazine.cancelBooking(docName, bookerName);
+                    }
+                }
                     break;
                 case 9:
                     return;
