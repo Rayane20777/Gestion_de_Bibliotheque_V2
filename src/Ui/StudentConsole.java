@@ -7,8 +7,6 @@ import Business.Magazines;
 
 public class StudentConsole {
 
-
-
     public static void studentMenu() {
         Scanner prompt = new Scanner(System.in);
         while (true) {
@@ -29,118 +27,139 @@ public class StudentConsole {
             prompt.nextLine();
 
             switch (choice) {
-                case 1: {
-                    System.out.println("Enter the book name:");
-                    String docName = prompt.nextLine();
-                    System.out.println("Enter your name:");
-                    String borrowerName = prompt.nextLine();
-                    Books book = Books.bookId(docName);
-                    if (book == null) {
-                        System.out.println("Book not found");
-                    } else {
-                        book.borrow(docName, borrowerName);
-                    }
-                }
+                case 1:
+                    borrowBook(prompt);
                     break;
-                case 2: {
-                    System.out.println("Enter the book name:");
-                    String docName = prompt.nextLine();
-                    System.out.println("Enter your name:");
-                    String borrowerName = prompt.nextLine();
-                    Magazines magazine = Magazines.magazineId(docName);
-                    if (magazine == null) {
-                        System.out.println("Book not found");
-                    } else {
-                        magazine.borrow(docName, borrowerName);
-                    }
-                }
-                break;
-
-                case 3: {
-                    System.out.println("Enter the book name:");
-                    String docName = prompt.nextLine();
-                    System.out.println("Enter your name:");String borrowerName = prompt.nextLine();
-
-                    Books book = Books.bookId(docName);
-                    if (book == null) {
-                        System.out.println("Book not found");
-                    } else {
-                        book.turnBack(docName, borrowerName);
-                    }
-                }
+                case 2:
+                    borrowMagazine(prompt);
                     break;
-                case 4: {
-                    System.out.println("Enter the magazine name:");
-                    String docName = prompt.nextLine();
-                    System.out.println("Enter your name:");
-                    String borrowerName = prompt.nextLine();
-                    Magazines magazine = Magazines.magazineId(docName);
-                    if (magazine == null) {
-                        System.out.println("Magazine not found");
-                    } else {
-                        magazine.turnBack(docName, borrowerName);
-                    }
-                }
+                case 3:
+                    returnBook(prompt);
                     break;
-                case 5:{
-                    System.out.println("Enter the book name:");
-                    String docName = prompt.nextLine();
-                    System.out.println("Enter your name:");
-                    String bookerName = prompt.nextLine();
-                    Books book = Books.bookId(docName);
-                    if (book == null) {
-                        System.out.println("Book not found");
-                    } else {
-                        book.book(docName, bookerName);
-                    }
-                }
+                case 4:
+                    returnMagazine(prompt);
                     break;
-                case 6:{
-                    System.out.println("Enter the magazine name:");
-                    String docName = prompt.nextLine();
-                    System.out.println("Enter your name:");
-                    String bookerName = prompt.nextLine();
-                    Magazines magazine = Magazines.magazineId(docName);
-                    if (magazine == null) {
-                        System.out.println("Magazine not found");
-                    } else {
-                        magazine.book(docName, bookerName);
-                    }
-                }
+                case 5:
+                    bookBook(prompt);
                     break;
-                case 7:{
-                    System.out.println("Enter the book name:");
-                    String docName = prompt.nextLine();
-                    System.out.println("Enter your name:");
-                    String bookerName = prompt.nextLine();
-                    Books book = Books.bookId(docName);
-                    if (book == null) {
-                        System.out.println("Book not found");
-                    } else {
-                        book.cancelBooking(docName, bookerName);
-                    }
-                }
-
+                case 6:
+                    bookMagazine(prompt);
                     break;
-                case 8:{
-                    System.out.println("Enter the magazine name:");
-                    String docName = prompt.nextLine();
-                    System.out.println("Enter your name:");
-                    String bookerName = prompt.nextLine();
-                    Magazines magazine = Magazines.magazineId(docName);
-                    if (magazine == null) {
-                        System.out.println("Magazine not found");
-                    } else {
-                        magazine.cancelBooking(docName, bookerName);
-                    }
-                }
+                case 7:
+                    cancelBookBooking(prompt);
+                    break;
+                case 8:
+                    cancelMagazineBooking(prompt);
                     break;
                 case 9:
                     return;
                 default:
                     System.out.println("Invalid choice");
             }
+        }
+    }
 
+    public static void borrowBook(Scanner prompt) {
+        System.out.println("Enter the book name:");
+        String docName = prompt.nextLine();
+        System.out.println("Enter your name:");
+        String borrowerName = prompt.nextLine();
+        Books book = Books.bookId(docName);
+        if (book == null) {
+            System.out.println("Book not found");
+        } else {
+            book.borrow(docName, borrowerName);
+        }
+    }
+
+    public static void borrowMagazine(Scanner prompt) {
+        System.out.println("Enter the magazine name:");
+        String docName = prompt.nextLine();
+        System.out.println("Enter your name:");
+        String borrowerName = prompt.nextLine();
+        Magazines magazine = Magazines.magazineId(docName);
+        if (magazine == null) {
+            System.out.println("Magazine not found");
+        } else {
+            magazine.borrow(docName, borrowerName);
+        }
+    }
+
+    public static void returnBook(Scanner prompt) {
+        System.out.println("Enter the book name:");
+        String docName = prompt.nextLine();
+        System.out.println("Enter your name:");
+        String borrowerName = prompt.nextLine();
+        Books book = Books.bookId(docName);
+        if (book == null) {
+            System.out.println("Book not found");
+        } else {
+            book.turnBack(docName, borrowerName);
+        }
+    }
+
+    public static void returnMagazine(Scanner prompt) {
+        System.out.println("Enter the magazine name:");
+        String docName = prompt.nextLine();
+        System.out.println("Enter your name:");
+        String borrowerName = prompt.nextLine();
+        Magazines magazine = Magazines.magazineId(docName);
+        if (magazine == null) {
+            System.out.println("Magazine not found");
+        } else {
+            magazine.turnBack(docName, borrowerName);
+        }
+    }
+
+    public static void bookBook(Scanner prompt) {
+        System.out.println("Enter the book name:");
+        String docName = prompt.nextLine();
+        System.out.println("Enter your name:");
+        String bookerName = prompt.nextLine();
+        Books book = Books.bookId(docName);
+        if (book == null) {
+            System.out.println("Book not found");
+        } else {
+            book.book(docName, bookerName);
+        }
+    }
+
+    public static void bookMagazine(Scanner prompt) {
+        System.out.println("Enter the magazine name:");
+        String docName = prompt.nextLine();
+        System.out.println("Enter your name:");
+        String bookerName = prompt.nextLine();
+        Magazines magazine = Magazines.magazineId(docName);
+        if (magazine == null) {
+            System.out.println("Magazine not found");
+        } else {
+            magazine.book(docName, bookerName);
+        }
+    }
+
+    public static void cancelBookBooking(Scanner prompt) {
+        System.out.println("Enter the book name:");
+        String docName = prompt.nextLine();
+        System.out.println("Enter your name:");
+        String bookerName = prompt.nextLine();
+        Books book = Books.bookId(docName);
+        if (book == null) {
+            System.out.println("Book not found");
+        } else {
+            book.cancelBooking(docName, bookerName);
+        }
+    }
+
+    public static void cancelMagazineBooking(Scanner prompt) {
+        System.out.println("Enter the magazine name:");
+        String docName = prompt.nextLine();
+        System.out.println("Enter your name:");
+        String bookerName = prompt.nextLine();
+        Magazines magazine = Magazines.magazineId(docName);
+        if (magazine == null) {
+            System.out.println("Magazine not found");
+        } else {
+            magazine.cancelBooking(docName, bookerName);
         }
     }
 }
