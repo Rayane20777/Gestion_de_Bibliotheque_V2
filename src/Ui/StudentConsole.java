@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Business.Books;
 import Business.Magazines;
+import Resources.InputValidator; // Import InputValidator class
 
 public class StudentConsole {
 
@@ -20,11 +21,11 @@ public class StudentConsole {
             System.out.println("6. Book a magazine");
             System.out.println("7. Cancel book booking");
             System.out.println("8. Cancel magazine booking");
-            System.out.println("9. exit");
+            System.out.println("9. Exit");
             System.out.println("******************************");
 
-            int choice = prompt.nextInt();
-            prompt.nextLine();
+            int choice = InputValidator.intValidator(prompt); // Use intValidator for input validation
+            prompt.nextLine(); // Consume the newline character
 
             switch (choice) {
                 case 1:
@@ -52,7 +53,7 @@ public class StudentConsole {
                     cancelMagazineBooking(prompt);
                     break;
                 case 9:
-                    return;
+                    return; // Exit the loop and end the program
                 default:
                     System.out.println("Invalid choice");
             }
