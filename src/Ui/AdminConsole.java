@@ -524,10 +524,9 @@ public class AdminConsole {
         System.out.println("Enter Publication Date (YYYY-MM-DD):");
         String publicationDate = prompt.nextLine();
 
-        System.out.println("Enter ISBN:");
-        String isbn = prompt.nextLine();
 
-        Books.addBook(id, title, author, publicationDate, isbn);
+
+        Books.addBook(id, title, author, publicationDate);
     }
 
     private static void removeBook(Scanner prompt) {
@@ -621,8 +620,6 @@ public class AdminConsole {
         System.out.println("Enter Email:");
         String email = prompt.nextLine();
 
-        System.out.println("Enter Password:");
-        String password = prompt.nextLine();
 
         System.out.println("Enter Faculty:");
         String faculty = prompt.nextLine();
@@ -675,9 +672,6 @@ public class AdminConsole {
 
         System.out.println("Enter Email:");
         String email = prompt.nextLine();
-
-        System.out.println("Enter Password:");
-        String password = prompt.nextLine();
 
         System.out.println("Enter Department:");
         String department = prompt.nextLine();

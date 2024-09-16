@@ -2,6 +2,7 @@ package Business;
 
 import DAO.BooksDAOImpl;
 import DAO.Interfaces.BooksDAO;
+import Resources.Generators;
 
 import java.util.List;
 
@@ -31,7 +32,9 @@ public class Books extends Document{
 
 
     // methods
-    public static void addBook(int id, String title, String author, String publicationDate, String isbn) {
+    public static void addBook(int id, String title, String author, String publicationDate) {
+        String isbn = Generators.isbnGenerator();
+
         Books newBook = new Books(id, title, author, publicationDate, Status.available, 0, 0, isbn);
         booksDAO.save(newBook);
         System.out.println("Book added successfully");
@@ -76,7 +79,7 @@ public class Books extends Document{
                 });
     }
 
-    public static Books bookId(String title) {
+    public static  Books bookId(String title) {
         List<Books> booksList = booksDAO.findAll();
         for (Books book : booksList) {
             if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
