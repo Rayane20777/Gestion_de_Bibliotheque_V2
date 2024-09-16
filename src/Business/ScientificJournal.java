@@ -154,7 +154,7 @@ public class ScientificJournal extends Document {
     }
 
     @Override
-    public void book(Books docId, Student bookerId) {
+    public void book(String docName, String bookerName) {
         System.out.println("Booking a scientific journal");
     }
 

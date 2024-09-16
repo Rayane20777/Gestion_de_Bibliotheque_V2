@@ -18,9 +18,11 @@ public class StudentConsole {
             System.out.println("2. Borrow a magazine");
             System.out.println("3. Return a book");
             System.out.println("4. Return a magazine");
-            System.out.println("5. Cancel book booking");
-            System.out.println("6. Cancel magazine booking");
-            System.out.println("7. exit");
+            System.out.println("5. Book a book");
+            System.out.println("6. Book a magazine");
+            System.out.println("7. Cancel book booking");
+            System.out.println("8. Cancel magazine booking");
+            System.out.println("9. exit");
             System.out.println("******************************");
 
             int choice = prompt.nextInt();
@@ -80,14 +82,27 @@ public class StudentConsole {
                     }
                 }
                     break;
-                case 5:
-                    System.out.println("Enter the book id:");
-
+                case 5:{
+                    System.out.println("Enter the book name:");
+                    String docName = prompt.nextLine();
+                    System.out.println("Enter your name:");
+                    String bookerName = prompt.nextLine();
+                    Books book = Books.bookId(docName);
+                    if (book == null) {
+                        System.out.println("Book not found");
+                    } else {
+                        book.book(docName, bookerName);
+                    }
+                }
                     break;
                 case 6:
-                    System.out.println("Enter the magazine id:");
+
                     break;
                 case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
                     return;
                 default:
                     System.out.println("Invalid choice");

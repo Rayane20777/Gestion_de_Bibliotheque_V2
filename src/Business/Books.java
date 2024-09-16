@@ -112,10 +112,6 @@ public class Books extends Document{
             return;
         }
 
-        if (book.getStatus() == Status.borrowed) {
-            book(book, student);
-            return;
-        }
 
         if (book.getStatus() != Status.available) {
             System.out.println("Book is not available for borrowing");
@@ -142,7 +138,7 @@ public class Books extends Document{
             return;
         }
 
-        if (book.getStatus() != Status.borrowed) {
+        if (book.getStatus() == Status.borrowed) {
             System.out.println("Book is not borrowed");
             return;
         }
@@ -155,7 +151,28 @@ public class Books extends Document{
     }
 
     @Override
-    public void book(Books docId, Student bookerId){
+    public void book(String docName, String bookerName){
+        Student student = Student.studentId(bookerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+
+        Books book = Books.bookId(docName);
+        if (book == null) {
+            System.out.println("Book not found");
+            return;
+        }
+
+        if (book.getStatus() != Status.booked) {
+            System.out.println("Book is available for borrowing, no need to book.");
+            return;
+        }
+
+        book.setBookerId(student.getId());
+        book.setStatus(Status.booked);
+        booksDAO.update(book);
+        System.out.println("Book booked successfully.");
 
     }
 

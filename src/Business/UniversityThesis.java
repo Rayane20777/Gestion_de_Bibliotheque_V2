@@ -92,7 +92,7 @@ public class UniversityThesis extends Document {
     // methods
 
     @Override
-    public void book(Books docId, Student bookerId) {
+    public void book(String docName, String bookerName) {
         System.out.println("The university thesis has been booked.");
     }
 

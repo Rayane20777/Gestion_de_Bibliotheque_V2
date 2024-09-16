@@ -4,6 +4,6 @@ import Business.Books;
 import Business.Student;
 
 public interface Bookable {
-    void book(Books docId, Student bookerId);
+    void book(String docName, String bookerName);
     void cancelBooking();
 }

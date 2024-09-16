@@ -98,7 +98,7 @@ public class Student extends User {
             }
         }
         System.out.printf("Student with name %s not found%n", borrowerName);
-        return null; // Indicate that the student was not found
+        return null;
     }
 
 
