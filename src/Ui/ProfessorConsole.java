@@ -16,10 +16,12 @@ public class ProfessorConsole {
             System.out.println("2. Borrow a university thesis");
             System.out.println("3. Return a scientific journal");
             System.out.println("4. Return a university thesis");
-            System.out.println("5. Cancel scientific journal booking");
-            System.out.println("6. Cancel university thesis booking");
-            System.out.println("7. go back");
-            System.out.println("8. exit");
+            System.out.println("5. Book a scientific journal");
+            System.out.println("6. Book a university thesis");
+            System.out.println("7. Cancel scientific journal booking");
+            System.out.println("8. Cancel university thesis booking");
+            System.out.println("9. go back");
+            System.out.println("10. exit");
             System.out.println("******************************");
 
             int choice = prompt.nextInt();
@@ -82,16 +84,63 @@ public class ProfessorConsole {
                     }
                 }
                     break;
-                case 5:
-                    System.out.println("Cancel scientific journal booking");
+                case 5:{
+                    System.out.println("Enter the scientific journal name:");
+                    String docName = prompt.nextLine();
+                    System.out.println("Enter your name:");
+                    String bookerName = prompt.nextLine();
+                    ScientificJournal scientificJournal = ScientificJournal.scientificJournalId(docName);
+                    if (scientificJournal == null) {
+                        System.out.println("Scientific journal not found");
+                    } else {
+                        scientificJournal.book(docName, bookerName);
+                    }
+                }
                     break;
-                case 6:
+                case 6:{
+                    System.out.println("Enter the university thesis name:");
+                    String docName = prompt.nextLine();
+                    System.out.println("Enter your name:");
+                    String bookerName = prompt.nextLine();
+                    UniversityThesis universityThesis = UniversityThesis.universityThesisId(docName);
+                    if (universityThesis == null) {
+                        System.out.println("Book not found");
+                    } else {
+                        universityThesis.book(docName, bookerName);
+                    }
+                }
+                    break;
+                case 7:{
+                    System.out.println("Enter the book name:");
+                    String docName = prompt.nextLine();
+                    System.out.println("Enter your name:");
+                    String bookerName = prompt.nextLine();
+                    UniversityThesis universityThesis = UniversityThesis.universityThesisId(docName);
+                    if (universityThesis == null) {
+                        System.out.println("Book not found");
+                    } else {
+                        universityThesis.cancelBooking(docName, bookerName);
+                    }
+                }
+                    break;
+                case 8:{
+                    System.out.println("Enter the scientific journal name:");
+                    String docName = prompt.nextLine();
+                    System.out.println("Enter your name:");
+                    String bookerName = prompt.nextLine();
+                    ScientificJournal scientificJournal = ScientificJournal.scientificJournalId(docName);
+                    if (scientificJournal == null) {
+                        System.out.println("Scientific journal not found");
+                    } else {
+                        scientificJournal.cancelBooking(docName, bookerName);
+                    }
+                }
                     System.out.println("Cancel university thesis booking");
                     break;
-                case 7:
+                case 9:
                     System.out.println("Go back");
                     return;
-                case 8:
+                case 10:
                     System.out.println("exit program");
                     System.exit(0);
                     break;

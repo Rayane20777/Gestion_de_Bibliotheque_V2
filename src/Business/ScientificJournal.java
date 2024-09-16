@@ -10,14 +10,14 @@ public class ScientificJournal extends Document {
     private String university;
     private static final ScientificJournalDAO scientificJournalDAO = new ScientificJournalDAOImpl();
 
-    public ScientificJournal(int id, String title, String author, String publicationDate, Status status, int borrowerId, int bookerId, String field , String university) {
+    // Constructor
+    public ScientificJournal(int id, String title, String author, String publicationDate, Status status, int borrowerId, int bookerId, String field, String university) {
         super(id, title, author, publicationDate, status, borrowerId, bookerId);
         this.field = field;
         this.university = university;
     }
 
-    // setters - getters
-
+    // Getters and setters
     public String getField() {
         return field;
     }
@@ -34,8 +34,7 @@ public class ScientificJournal extends Document {
         this.university = university;
     }
 
-
-    // methods
+    // CRUD operations
 
     public static void addScientificJournal(int id, String title, String author, String publicationDate, String field, String university) {
         ScientificJournal newScientificJournal = new ScientificJournal(id, title, author, publicationDate, Status.available, 0, 0, field, university);
@@ -64,16 +63,16 @@ public class ScientificJournal extends Document {
     }
 
     public static void displayScientificJournals() {
-        List<ScientificJournal> scientificJournalsList = scientificJournalDAO.findAll();
-        for (ScientificJournal scientificJournal : scientificJournalsList) {
+        List<ScientificJournal> scientificJournalList = scientificJournalDAO.findAll();
+        for (ScientificJournal scientificJournal : scientificJournalList) {
             scientificJournal.displayDetails();
             System.out.println("----------------------------");
         }
     }
 
     public static void searchScientificJournal(String title) {
-        List<ScientificJournal> scientificJournalsList = scientificJournalDAO.findAll();
-        scientificJournalsList.stream()
+        List<ScientificJournal> scientificJournalList = scientificJournalDAO.findAll();
+        scientificJournalList.stream()
                 .filter(scientificJournal -> scientificJournal.getTitle().toLowerCase().contains(title.toLowerCase()))
                 .forEach(scientificJournal -> {
                     scientificJournal.displayDetails();
@@ -82,26 +81,26 @@ public class ScientificJournal extends Document {
     }
 
     public void displayDetails() {
+        System.out.println("ID: " + getId());
         System.out.println("Title: " + getTitle());
         System.out.println("Author: " + getAuthor());
         System.out.println("Publication Date: " + getPublicationDate());
         System.out.println("Field: " + getField());
         System.out.println("University: " + getUniversity());
+        System.out.println("Status: " + getStatus());
     }
 
-
-
     public static ScientificJournal scientificJournalId(String title) {
-        List<ScientificJournal> scientificJournalsList = scientificJournalDAO.findAll();
-        for (ScientificJournal scientificJournal : scientificJournalsList) {
-            if (scientificJournal.getTitle().toLowerCase().contains(title.toLowerCase())) {
+        List<ScientificJournal> scientificJournalList = scientificJournalDAO.findAll();
+        for (ScientificJournal scientificJournal : scientificJournalList) {
+            if (scientificJournal.getTitle().toLowerCase().equals(title.toLowerCase())) {
                 return scientificJournal;
             }
         }
         return null;
     }
 
-    // methods
+    // Borrowing, Returning, Booking, and Canceling Booking methods
 
     @Override
     public void borrow(String docName, String borrowerName) {
@@ -142,8 +141,8 @@ public class ScientificJournal extends Document {
             return;
         }
 
-        if (scientificJournal.getStatus() == Status.available) {
-            System.out.println("Scientific journal is not borrowed");
+        if (scientificJournal.getStatus() != Status.borrowed) {
+            System.out.println("This scientific journal is not borrowed");
             return;
         }
 
@@ -155,13 +154,50 @@ public class ScientificJournal extends Document {
 
     @Override
     public void book(String docName, String bookerName) {
-        System.out.println("Booking a scientific journal");
+        Student student = Student.studentId(bookerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+
+        ScientificJournal scientificJournal = scientificJournalId(docName);
+        if (scientificJournal == null) {
+            System.out.println("Scientific journal not found");
+            return;
+        }
+
+        if (scientificJournal.getStatus() == Status.borrowed) {
+            scientificJournal.setBookerId(student.getId());
+            scientificJournal.setStatus(Status.booked);
+            scientificJournalDAO.update(scientificJournal);
+            System.out.println("Scientific journal booked successfully");
+        } else {
+            System.out.println("This scientific journal is currently available for borrowing");
+        }
     }
 
     @Override
     public void cancelBooking(String docName, String bookerName) {
-        System.out.println("Canceling booking of a scientific journal");
+        Student student = Student.studentId(bookerName);
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+
+        ScientificJournal scientificJournal = scientificJournalId(docName);
+        if (scientificJournal == null) {
+            System.out.println("Scientific journal not found");
+            return;
+        }
+
+        if (scientificJournal.getBookerId() != student.getId()) {
+            System.out.println("This student hasn't booked this scientific journal");
+            return;
+        }
+
+        scientificJournal.setBookerId(0);
+        scientificJournal.setStatus(Status.available);
+        scientificJournalDAO.update(scientificJournal);
+        System.out.println("Scientific journal booking canceled successfully");
     }
-
-
 }

@@ -72,5 +72,15 @@ public class Professor extends User {
     public void displayDetails() {
         System.out.println("ID: " + getId() + " Name: " + getName() + " Email: " + getEmail() + " Department: " + getDepartment());
     }
+    public static Professor professorId(String borrowerName) {
+        List<Professor> professorsList = professorDAO.findAll();
+        for (Professor professor : professorsList) {
+            if (professor.getName().equals(borrowerName)) {
+                return professor;
+            }
+        }
+        System.out.printf("Professor with name %s not found%n", borrowerName);
+        return null;
+    }
 
 }
